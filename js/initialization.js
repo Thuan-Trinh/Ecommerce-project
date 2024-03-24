@@ -33,7 +33,7 @@ function createProduct() {
         },
         // Thêm các phần tử khác vào mảng tương tự như trên
       ];
-    localStorage.setItem('products', JSON.stringify(cardsInfor));
+    localStorage.setItem('cardsInfor', JSON.stringify(cardsInfor));
   }
 }
 
