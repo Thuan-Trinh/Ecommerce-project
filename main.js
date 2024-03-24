@@ -2,7 +2,7 @@
   {
     //    Thêm card sản phẩm trong catalogpage
     // img catalog array
-  /*  const cataCards = [
+  const cataCards = [
       {
         image: "./assets/images/item-img-1.png",
         name: "1.3 Chair",
@@ -50,40 +50,7 @@
         gridCardsContainer.appendChild(cardClone);
       });
     }
-*/
-// Lấy mảng từ local storage
-const storedCataCards = localStorage.getItem('cataCards');
 
-// Chuyển đổi chuỗi JSON thành mảng JavaScript
-const cataCards = JSON.parse(storedCataCards);
-
-// Lấy phần tử HTML có id là "grid-item-cards" để chèn các thẻ sản phẩm vào
-const gridCardsContainer = document.getElementById("grid-item-cards");
-
-// Lấy mẫu thẻ sản phẩm
-const cardTemplate = document.querySelector(".card");
-
-// Kiểm tra xem mẫu thẻ đã tồn tại chưa
-if (cardTemplate) {
-    cardTemplate.style.display = "none"; // Ẩn mẫu thẻ
-
-    // Duyệt qua mỗi phần tử trong mảng cataCards và tạo các thẻ sản phẩm tương ứng
-    cataCards.forEach(function (cardInfo) {
-        // Sao chép mẫu thẻ
-        let cardClone = cardTemplate.cloneNode(true);
-
-        // Cập nhật thông tin cho thẻ sản phẩm sao chép
-        cardClone.querySelector(".card-img").src = cardInfo.image;
-        cardClone.querySelector(".card-name").textContent = cardInfo.name;
-        cardClone.querySelector(".card-price").textContent = cardInfo.price;
-
-        // Hiển thị thẻ sản phẩm sao chép
-        cardClone.style.display = "block";
-
-        // Chèn thẻ sản phẩm vào container
-        gridCardsContainer.appendChild(cardClone);
-    });
-}
 
     const tags = document.querySelectorAll(".tags");
     function hideTags(n) {
