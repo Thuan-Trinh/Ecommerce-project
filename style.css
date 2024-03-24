@@ -937,14 +937,14 @@ footer {
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 
   padding: 0rem 0rem 1.5rem 0rem;
 }
 
 .left-side-arrange {
-  visibility: hidden;
+  display: none;
 }
 
 .right-side-arrange {
