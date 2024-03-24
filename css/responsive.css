@@ -61,6 +61,7 @@
     border: none;
     height: 100%;
     width: 100%;
+    outline: none;
   }
 
   #search-bar input::placeholder {
@@ -455,7 +456,8 @@
     #search-bar input {
       border: none;
       height: 100%;
-      /* width: calc(100% - 10rem);xem lại  */
+      width: 100%;
+      outline: none;
     }
   
     #search-bar input::placeholder {
