@@ -1,8 +1,10 @@
+
+// Mảng thẻ sản phẩm
 (function () {
   {
     //    Thêm card sản phẩm trong catalogpage
     // img catalog array
-    const cataCards = [
+    const cardsInfor = [
       {
         image: "./assets/images/item-img-1.png",
         name: "1.3 Chair",
@@ -35,6 +37,9 @@
       },
       // Thêm các phần tử khác vào mảng tương tự như trên
     ];
+    localStorage.setItem('cardsInfor', JSON.stringify(cardsInfor));
+
+    let cataCards = JSON.parse(localStorage.getItem('cardsInfor'));
 
     const gridCardsContainer = document.getElementById("grid-item-cards");
     const cardTemplate = document.querySelector(".card");
