@@ -2,7 +2,7 @@
   {
     //    Thêm card sản phẩm trong catalogpage
     // img catalog array
-  const cataCards = [
+    const cataCards = [
       {
         image: "./assets/images/item-img-1.png",
         name: "1.3 Chair",
@@ -118,5 +118,23 @@
         btnShipping.classList.remove("btn-active");
       btnTakeAway.classList.add("btn-active");
     };
+  }
+})();
+
+// function filter mobile
+(function () {
+  const filterBtn = document.querySelector('.grid-content .arrange-btns .left-side-arrange .ic-filter');
+  const filterTabs = document.querySelector('.grid-content .arrange-btns .left-side-arrange .filter-tabs');
+
+  console.log(filterBtn, filterTabs);
+
+  if (filterBtn && filterTabs) {
+    filterBtn.onclick = () => {
+      if (filterTabs.style.display === 'none' || filterTabs.style.display === '') {
+        filterTabs.style.display = 'flex';
+      } else {
+        filterTabs.style.display = 'none';
+      }
+    }
   }
 })();
