@@ -1808,7 +1808,6 @@ footer {
     position: absolute;
     top: 2rem;
     z-index: 99;
-    transition: top 0.3s ease-out 0.1s;
   }
 
   .grid-content .arrange-btns .filter-tabs span a {
