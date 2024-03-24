@@ -419,7 +419,7 @@ nav ul li a:hover::after {
   gap: 2rem;
 }
 
-.novel-item-left {
+.novel-items:first-child {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -1460,12 +1460,13 @@ footer {
 
   }
 
-  .novel-item-left {
+
+  .novel-items:first-child {
     grid-row-start: 1;
     grid-row-end: 2;
   }
 
-  .novel-item-left .img-card {
+  .novel-items:first-child .img-card {
     height: fit-content;
   }
 
@@ -2149,11 +2150,11 @@ footer {
     gap: 1rem;
   }
 
-  .novel-item-left {
+  .novel-items:first-child {
     margin-bottom: 0.5rem;
   }
 
-  .novel-item-left .img-card {
+  .novel-items:first-child .img-card {
     height: 20rem;
     width: 100%;
   }

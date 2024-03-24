@@ -38,3 +38,5 @@ function createProduct() {
 }
 
 window.onload = createProduct();
+window.onload = createHomeCard();
+
