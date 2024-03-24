@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Page</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <script src="./main.js" defer></script>
+
+</head>
+
+<body>
+    <div class="add">
+        <span>Free shipping over $50!</span>
+    </div>
+    <section id="side-menu" class="side-menu">
+        <div class="top-section">
+            <div class="side-header">
+                <img src="./assets/images/ic-logo.svg" alt="ic-logo">
+                <img src="./assets/images/ic-close-menu.svg" alt="ic-close-menu" id="close-menu" class="close-menu">
+            </div>
+            <form action="" id="search-bar">
+                <img src="./assets/images/ic-search.svg" alt="ic-search" id="ic-search" class="ic-search">
+                <input type="search" placeholder="Search">
+            </form>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="./catalog.html">Product</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button>
+            <span>SIGN UP</span>
+        </button>
+    </section>
+    <div id="overlay"></div>
+    <!-- Header Section -->
+    <header id="header-section" class="container">
+        <div class="header">
+            <div class="subhead">
+                <div class="address">
+                    <img src="./assets/images/ic-home.svg" alt="ic-home">
+                    <span><strong>London</strong>, Brick Lane, 8</span>
+                    <img src="./assets/images/ic-drop-down.svg" alt="ic-drop-down">
+                </div>
+
+                <div class="shipping-btns">
+                    <button id="btn-shipping" class="btn-active">Shipping</button>
+                    <button id="btn-take-away">Take away</button>
+                </div>
+            </div>
+            <div class="header-nav">
+                <div class="header-nav-left">
+                    <img src="./assets/images/ic-menu.svg" alt="ic-menu" class="ic-menu" id="toggle-menu">
+                    <img src="./assets/images/ic-logo.svg" alt="logo-page">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#" class="active">Product</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="icons">
+                    <img src="./assets/images/ic-search.svg" alt="ic-search" class="ic-search">
+                    <a href="#"><img src="./assets/images/ic-personal.svg" alt="ic-personal" class="ic-personal"></a>
+                    <div class="cart">
+                        <a href="#">
+                            <img src="./assets/images/ic-cart.svg" alt="ic-cart">
+                            <div class="count"><span>0</span></div>
+                        </a>
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- BREADCRUMS Chairs & Benches-->
+    <section id="breadCrums" class="container">
+        <div class="breadCrums">
+            <span><a href="./index.html">Home</a></span>
+            <img src="./assets/images/ic-arrow.svg" alt="ic-arrow">
+            <span>Chairs & Benches</span>
+        </div>
+    </section>
+    <!-- Catalog banner -->
+    <section id="catalog-banner" class="container">
+        <div class="catalog-banner">
+            <img src="./assets/images/catalog-baner-chairs-benches.png" alt="catalog-banner-img">
+            <h2>Chairs & Benches</h2>
+        </div>
+    </section>
+    <!-- CONTENT PAGE -->
+    <section id="body-content" class="container">
+        <div class="body-content">
+            <!-- SIDE BAR CARALOG -->
+            <div class="side-bar">
+                <span><a href="#">Novelties</a></span>
+                <span><a href="#" class="side-bar-active">Chairs & Benches</a></span>
+                <span><a href="#">Tables</a></span>
+                <span><a href="#">Sofas</a></span>
+                <span><a href="#">Beds</a></span>
+                <span><a href="#">Starage & Shelves</a></span>
+                <span><a href="#">Office</a></span>
+                <span><a href="#">Lamps</a></span>
+            </div>
+
+            <!-- GRID CONTENT -->
+            <div class="grid-content">
+                <div class="arrange-btns">
+                    <div class="left-side-arrange">
+                        <img src="./assets/images/ic-filter.svg" alt="ic-filter" class="ic-filter">
+                        <span>Filter</span>
+                    </div>
+                    <div class="right-side-arrange">
+                        <img src="./assets/images/ic-arrange-1.svg" alt="ic-arrange-1" class="ic-arrange">
+                        <img src="./assets/images/ic-arrange-2.svg" alt="ic-arrange-2" class="ic-arrange">
+                    </div>
+                </div>
+                <!-- top grid -->
+                <div id="grid-item-cards">
+                    <div class="card-items" style="display: none;">
+                        <div class="card">
+                            <div class="tags">
+                                <div class="new-tag">
+                                    NEW
+                                </div>
+
+                                <div class="coupon-tag">
+                                    -50%
+                                </div>
+                            </div>
+                            <div class="card-item-img">
+                                <img src="./assets/images/item-img-1.png" alt="item-img" class="card-img">
+                            </div>
+
+                            <div class="card-detail">
+                                <div class="star-rating">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                </div>
+
+                                <h6 class="card-name">1.3 Chair</h6>
+                                <span class="card-price">$69.90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- down grid -->
+                <div id="grid-content-2">
+                    <div class="grid-card-1">
+                        <div class="grid-card-img">
+                            <img src="./assets/images/novel-img-1.png" alt="item-img">
+                        </div>
+
+                        <div class="card-detail">
+                            <h6>BONDT – round</h6>
+                            <span>Design by Merit Frank, Nana Gröner, 2010</span>
+                        </div>
+                    </div>
+
+                    <div class="card-items">
+                        <div class="card">
+                            <div class="tags">
+                                <div class="new-tag">
+                                    NEW
+                                </div>
+
+                                <div class="coupon-tag">
+                                    -50%
+                                </div>
+                            </div>
+                            <div class="card-item-img">
+                                <img src="./assets/images/item-img-1.png" alt="item-img" class="card-img">
+                            </div>
+
+                            <div class="card-detail">
+                                <div class="star-rating">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                </div>
+
+                                <h6 class="card-name">1.3 Chair</h6>
+                                <span class="card-price">$69.90</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-items">
+                        <div class="card">
+                            <div class="tags">
+                                <div class="new-tag">
+                                    NEW
+                                </div>
+
+                                <div class="coupon-tag">
+                                    -50%
+                                </div>
+                            </div>
+                            <div class="card-item-img">
+                                <img src="./assets/images/item-img-1.png" alt="item-img" class="card-img">
+                            </div>
+
+                            <div class="card-detail">
+                                <div class="star-rating">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                    <img src="./assets/images/ic-stars.svg" alt="ic-star">
+                                </div>
+
+                                <h6 class="card-name">1.3 Chair</h6>
+                                <span class="card-price">$69.90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-img">
+                    <img src="./assets/images/bottom-banner-image.png" alt="bottom-banner">
+                </div>
+                <div class="bottom-img-title">
+                    <h2>TURNTABLE COUCH</h2>
+                    <p>The archaic form of this table speaks for itself. It owes its unique identity to the feeling that
+                        it turns around its own axis. It is present in the room as a feature and fixed on its slim-line
+                        middle foot in solid wood.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Banner -->
+    <section id="newsLetter" class="container">
+        <div class="newsLetter">
+            <img src="./assets/images/newsLetter-img.png" alt="newsLetter-img" class="newsLetter-img">
+            <div class="content">
+                <div class="content-title">
+                    <h3>Join Our Newsletter</h3>
+                    <span>Sign up for deals, new products and promotions</span>
+                </div>
+                <div class="form">
+                    <form action="">
+                        <img src="./assets/images/ic-email.svg" alt="ic-email">
+                        <input type="email" placeholder="Email address">
+                    </form>
+                    <button>
+                        <span>Sign Up</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section id="newsLetter-2">
+        <div class="newsLetter">
+            <img src="./assets/images/newsLetter-img.png" alt="newsLetter-img" class="newsLetter-img">
+            <div class="content">
+                <div class="content-title">
+                    <h3>Join Our Newsletter</h3>
+                    <span>Sign up for deals, new products and promotions</span>
+                </div>
+                <div class="form">
+                    <form action="">
+                        <img src="./assets/images/ic-email.svg" alt="ic-email">
+                        <input type="email" placeholder="Email address">
+                    </form>
+                    <button>
+                        <span>Sign Up</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-up">
+            <img src="./assets/images/ic-logo-white.svg" alt="ic-logo-white">
+            <div class="between">
+                <span>Design furniture Store</span>
+            </div>
+            <div class="right-nav">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="./catalog.html">Product</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-below">
+            <div class="footer-below-left">
+                <span>Copyright © 2023 Iconic. All rights reserved</span>
+                <span>Privacy Policy</span>
+                <span>Terms of Use</span>
+            </div>
+
+            <div class="footer-below-right">
+                <img src="./assets/images/ic-instagram.svg" alt="ic-instagram">
+                <img src="./assets/images/ic-youtube.svg" alt="ic-youtube">
+                <img src="./assets/images/ic-facebook.svg" alt="ic-facebook">
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
