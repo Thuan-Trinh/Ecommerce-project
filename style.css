@@ -740,7 +740,7 @@ nav ul li a:hover::after {
   border: none;
   background-color: transparent;
   align-self: stretch;
-  padding: 1rem;
+  /* padding: 1rem; */
 
   outline: none;
 }
