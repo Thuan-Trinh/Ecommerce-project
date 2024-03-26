@@ -9,37 +9,44 @@
     const cardTemplate = document.querySelector(".card");
 
     if (cardTemplate) {
-      cardTemplate.style.display = "none";
       cataCards.forEach(function (cardInfor) {
         let cardClone = cardTemplate.cloneNode(true);
         cardClone.querySelector(".card-img").src = cardInfor.image;
         cardClone.querySelector(".card-name").textContent = cardInfor.name;
         cardClone.querySelector(".card-price").textContent = cardInfor.price;
-        cardClone.style.display = "block";
+        // cardClone.style.display = "block";
+        const tags = cardClone.querySelector(".tags");
+        if (cardInfor.arrival === 'New') {
+          tags.style.display = "block";
+        } else {
+          tags.style.display = "none";
+          
+        }
         gridCardsContainer.appendChild(cardClone);
       });
+      cardTemplate.style.display = "none";
     }
 
     // Ẩn hiện tags sản phẩm
-    const tags = document.querySelectorAll(".tags");
-    function hideTags(n) {
-      if (n > 0 && n <= tags.length) {
-        let targetTag = tags[n];
-        if (targetTag.style.display === "none") {
-          targetTag.style.display = "block";
-        } else {
-          targetTag.style.display = "none";
-        }
-      } else {
-        console.log("Không tìm thấy phần tử thứ " + n);
-      }
-    }
+    // const tags = document.querySelectorAll(".tags");
+    // function hideTags(n) {
+    //   if (n > 0 && n <= tags.length) {
+    //     let targetTag = tags[n];
+    //     if (targetTag.style.display === "none") {
+    //       targetTag.style.display = "block";
+    //     } else {
+    //       targetTag.style.display = "none";
+    //     }
+    //   } else {
+    //     console.log("Không tìm thấy phần tử thứ " + n);
+    //   }
+    // }
 
-    console.log(hideTags(2));
-    console.log(hideTags(5));
-    console.log(hideTags(6));
-    console.log(hideTags(8));
-    console.log(hideTags(7));
+    // console.log(hideTags(2));
+    // console.log(hideTags(5));
+    // console.log(hideTags(6));
+    // console.log(hideTags(8));
+    // console.log(hideTags(7));
   }
 
   {
