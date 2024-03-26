@@ -17,7 +17,8 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
 
 .bolder {
@@ -44,7 +45,8 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
 
 header {
@@ -88,7 +90,8 @@ header {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 133.333% */
+    line-height: 16px;
+    /* 133.333% */
 
     background-color: inherit;
     width: 120px;
@@ -133,21 +136,54 @@ nav {
 }
 
 nav a {
+    position: relative;
     color: var(--neutral-4, #9DADBE);
     /* Body Reg */
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    /* 24px */
 
     text-decoration: none;
 
     flex: 1 1 auto
 }
 
+header nav a::after {
+    content: "";
+    width: 0;
+    height: 1.5px;
+    background: var(--primary);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: -0.1875rem;
+    transition: 0.5s;
+}
+
+header nav a:hover::after {
+    width: 60%;
+}
+
+header nav a:hover {
+    color: var(--primary);
+}
+
 a.a_Choosed {
-    color: black; 
+    color: black;
+}
+
+header nav .a_Choosed::after {
+    content: "";
+    width: 60%;
+    height: 1.5px;
+    background: var(--primary);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: -0.1875rem;
 }
 
 .icons {
@@ -170,7 +206,7 @@ a.a_Choosed {
 
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"%3E%3Ccircle cx="8" cy="8" r="8" fill="%2338CB89"%3E%3C/circle%3E%3C/svg%3E');
 
-    display:     flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -212,7 +248,8 @@ main {
     font-size: 55px;
     font-style: normal;
     font-weight: 700;
-    line-height: 60px; /* 109.091% */
+    line-height: 60px;
+    /* 109.091% */
     text-transform: uppercase;
 }
 
@@ -258,7 +295,7 @@ main {
     display: flex;
     text-align: center;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 
     color: white;
 
@@ -267,12 +304,13 @@ main {
 
 .innerFrame {
     color: var(--neutral-4, #9DADBE);
-/* Body Med */
+    /* Body Med */
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
 
 .selectedStep .innerFrame {
@@ -326,17 +364,19 @@ table.mobile-table {
 
 th {
     color: var(--primary, #000);
-/* Body Med */
+    /* Body Med */
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
-    
+    line-height: 24px;
+    /* 150% */
+
     padding-bottom: 1rem;
 }
 
-th, td {
+th,
+td {
     border-bottom: 2px solid var(--neutral-3, #E0E6EB);
 }
 
@@ -375,22 +415,24 @@ th, td {
 
 .productInfo p {
     color: var(--neutral-5, #52667A);
-/* Subhead s1 Reg */
+    /* Subhead s1 Reg */
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 133.333% */
+    line-height: 16px;
+    /* 133.333% */
 }
 
 .productInfo p.bolder {
     color: var(--primary, #000);
-/* Body Bold */
+    /* Body Bold */
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
 
 .productInfo .remove {
@@ -444,7 +486,8 @@ th, td {
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 28px; /* 140% */
+    line-height: 28px;
+    /* 140% */
     text-transform: uppercase;
 }
 
@@ -456,7 +499,8 @@ th, td {
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    line-height: 28px; /* 140% */
+    line-height: 28px;
+    /* 140% */
     text-transform: uppercase;
 }
 
@@ -489,12 +533,12 @@ th, td {
 
 .cartSummary h3 {
     color: var(--primary, #000);
-/* H3 Bold */
-font-family: Inter;
-font-size: 25px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    /* H3 Bold */
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .shippingOptions {
@@ -536,7 +580,8 @@ line-height: normal;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    /* 24px */
 
     display: flex;
     align-items: center;
@@ -563,10 +608,14 @@ line-height: normal;
     position: absolute;
     top: 0;
     left: 0;
-    width: 16px; /* Width for the default circle */
-    height: 16px; /* Height for the default circle */
-    border: 1px solid #000; /* Border color for default state */
-    border-radius: 50%; /* Ensures it's a circle */
+    width: 16px;
+    /* Width for the default circle */
+    height: 16px;
+    /* Height for the default circle */
+    border: 1px solid #000;
+    /* Border color for default state */
+    border-radius: 50%;
+    /* Ensures it's a circle */
 
     align-self: center;
     justify-self: center;
@@ -574,12 +623,12 @@ line-height: normal;
 }
 
 /* Checked state */
-.optionFrame > input[type="radio"]:checked + label::before {
+.optionFrame>input[type="radio"]:checked+label::before {
     /* Custom radio button design for checked state */
     background-image: url("./images/Radio\ button.svg");
     border: none;
     background-size: cover;
-    
+
     width: 20px;
     height: 20px;
 }
@@ -607,7 +656,8 @@ line-height: normal;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    /* 24px */
 }
 
 .totalDisplay {
@@ -625,14 +675,16 @@ line-height: normal;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    line-height: 28px; /* 140% */
+    line-height: 28px;
+    /* 140% */
     text-transform: uppercase;
-    
+
 }
 
 .cartSummary button {
 
-    width: calc(100% - 3rem); /* Adjust width by subtracting the horizontal padding of the parent */
+    width: calc(100% - 3rem);
+    /* Adjust width by subtracting the horizontal padding of the parent */
     height: 3.2rem;
 
     border-radius: 8px;
@@ -645,7 +697,8 @@ line-height: normal;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    line-height: 28px; /* 140% */
+    line-height: 28px;
+    /* 140% */
     text-transform: uppercase;
 
     position: absolute;
@@ -674,7 +727,8 @@ line-height: normal;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    line-height: 28px; /* 140% */
+    line-height: 28px;
+    /* 140% */
 }
 
 form {
@@ -689,7 +743,7 @@ form {
     align-self: stretch;
 }
 
-.form-group{
+.form-group {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -698,12 +752,13 @@ form {
 
 input[type="text"]::placeholder {
     color: var(--primary, #000);
-/* Body Reg */
+    /* Body Reg */
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    /* 24px */
 }
 
 
@@ -722,7 +777,8 @@ input[type="submit"] {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
 
 input[type="submit"]:hover {
@@ -742,14 +798,16 @@ footer {
     gap: 49px;
 }
 
-footer p, footer a {
+footer p,
+footer a {
     color: var(--neutral-2, #F3F5F7);
     /* Body Reg */
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    /* 24px */
 }
 
 footer .logo-nav {
@@ -770,7 +828,7 @@ footer .slogan .rectangle {
     border: 1px solid var(--neutral-5, #52667A);
 }
 
-footer .footer-nav a{
+footer .footer-nav a {
     text-decoration: none;
 
 }
@@ -810,24 +868,3 @@ footer .footer-nav {
     gap: 1rem;
     flex-wrap: wrap;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

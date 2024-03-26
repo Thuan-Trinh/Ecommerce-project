@@ -301,11 +301,11 @@ nav ul li a:hover::after {
 
 
 
-.cart {
+.cartItemsIcon{
   position: relative;
 }
 
-.count {
+.cartItemsNumbers {
   width: 1rem;
   height: 1rem;
   border-radius: 0.5rem;
