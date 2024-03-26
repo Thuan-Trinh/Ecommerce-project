@@ -1,9 +1,9 @@
-
 (function () {
   // Tạo card từ thẻ có sẵn, với data thẻ lấy từ js khác đã đẩy lên local
   // catalog page
   {
-    let cataCards = JSON.parse(localStorage.getItem('cardsInfor'));
+    let cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
+    console.log(cataCards);
 
     const gridCardsContainer = document.getElementById("grid-item-cards");
     const cardTemplate = document.querySelector(".card");
@@ -62,7 +62,6 @@
       };
     }
   }
-
 })();
 
 //function toggle cho 2 btn trong phần subheader
@@ -70,7 +69,7 @@
 (function () {
   const btnShipping = document.getElementById("btn-shipping");
   const btnTakeAway = document.getElementById("btn-take-away");
-  console.log(btnShipping, btnTakeAway)
+  console.log(btnShipping, btnTakeAway);
 
   if (btnShipping && btnTakeAway) {
     btnShipping.onclick = () => {
@@ -94,19 +93,53 @@
 
 // function filter mobile
 (function () {
-  const filterBtn = document.querySelector('.grid-content .arrange-btns .left-side-arrange .ic-filter');
-  const filterTabs = document.querySelector('.grid-content .arrange-btns .left-side-arrange .filter-tabs');
+  const filterBtn = document.querySelector(
+    ".grid-content .arrange-btns .left-side-arrange .ic-filter"
+  );
+  const filterTabs = document.querySelector(
+    ".grid-content .arrange-btns .left-side-arrange .filter-tabs"
+  );
 
   console.log(filterBtn, filterTabs);
 
   if (filterBtn && filterTabs) {
     filterBtn.onclick = () => {
-      if (filterTabs.style.display === 'none' || filterTabs.style.display === '') {
-        filterTabs.style.display = 'flex';
+      if (
+        filterTabs.style.display === "none" ||
+        filterTabs.style.display === ""
+      ) {
+        filterTabs.style.display = "flex";
       } else {
-        filterTabs.style.display = 'none';
+        filterTabs.style.display = "none";
       }
-    }
+    };
   }
 })();
 
+{
+  const homeCardNovelContainer = document.querySelector(
+    ".novelties-section .novel-container"
+  );
+
+  const homeCardList = JSON.parse(localStorage.getItem("homeCard"));
+  console.log(homeCardList);
+
+  if (homeCardList) {
+    const listCardNovel = homeCardList.map((product) => {
+      const { id, image, name, title } = product;
+
+      return `
+    <div class="novel-items">
+                      <div class="img-card">
+                          <img src="${image}" alt="${image}" class="novel-card-img">
+                      </div>
+                      <div class="novel-title">
+                          <h6 class="novel-name">${name}</h6>
+                          <p class="novel-title">${title}</p>
+                      </div>
+                  </div>
+    `;
+    });
+    homeCardNovelContainer.innerHTML = listCardNovel.join("");
+  }
+}
