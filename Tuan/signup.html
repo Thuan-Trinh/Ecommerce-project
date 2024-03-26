@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="signup.css">
+  <title>Sign Up Form</title>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-header">
+        <div class="title">Sign up</div>
+        <div class="signup-text">Already have an account? <a href="./login.html" class="signup-link">Sign in</a></div>
+      </div>
+      <div class="form-body">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+          <div class="password-icon"></div>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="agree" name="agree" required>
+          <label for="agree">I agree with <a href="#" class="rules"><strong>Privacy Policy</strong></a> and <a href="#" class="rules"><strong>Terms of Use</strong> </a></label>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button type="submit" id="signup-btn">Sign Up</button>
+      </div>
+    </div>
+    <img src="./hinh anh/Img.png" alt="Placeholder Image">
+  </div>
+  <script src="signup.js"></script>
+</body>
+</html>
