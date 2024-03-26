@@ -48,6 +48,8 @@
   }
 })();
 
+
+// thêm mảng product home
 (function createHomeCard() {
   if (localStorage.getItem('homeCard') == null) {
     let homeCard = [
