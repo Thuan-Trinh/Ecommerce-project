@@ -2,10 +2,12 @@
   // Tạo card từ thẻ có sẵn, với data thẻ lấy từ js khác đã đẩy lên local
   // catalog page
   {
-    let cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
+    //gọi card container
+    const gridCardsContainer = document.getElementById("grid-item-cards");
+    //gọi mảng từ local
+    const cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
     console.log(cataCards);
 
-    const gridCardsContainer = document.getElementById("grid-item-cards");
     const cardTemplate = document.querySelector(".card");
 
     if (cardTemplate) {
@@ -16,37 +18,15 @@
         cardClone.querySelector(".card-price").textContent = cardInfor.price;
         // cardClone.style.display = "block";
         const tags = cardClone.querySelector(".tags");
-        if (cardInfor.arrival === 'New') {
-          tags.style.display = "block";
+        if (cardInfor.arrival === "New") {
+          tags.style.visibility = "visible";
         } else {
-          tags.style.display = "none";
-          
+          tags.style.visibility = "hidden";
         }
         gridCardsContainer.appendChild(cardClone);
       });
       cardTemplate.style.display = "none";
     }
-
-    // Ẩn hiện tags sản phẩm
-    // const tags = document.querySelectorAll(".tags");
-    // function hideTags(n) {
-    //   if (n > 0 && n <= tags.length) {
-    //     let targetTag = tags[n];
-    //     if (targetTag.style.display === "none") {
-    //       targetTag.style.display = "block";
-    //     } else {
-    //       targetTag.style.display = "none";
-    //     }
-    //   } else {
-    //     console.log("Không tìm thấy phần tử thứ " + n);
-    //   }
-    // }
-
-    // console.log(hideTags(2));
-    // console.log(hideTags(5));
-    // console.log(hideTags(6));
-    // console.log(hideTags(8));
-    // console.log(hideTags(7));
   }
 
   {

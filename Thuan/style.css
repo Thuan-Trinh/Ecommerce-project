@@ -1051,6 +1051,59 @@ footer {
   font-weight: 700;
   line-height: 1.5rem;
 }
+.card-bottom{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.card-bottom .add-to-cart{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-bottom .add-to-cart .count{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.card-bottom .add-to-cart .count .sub{
+  background-color: var(--neutral-03);
+  padding: 0.5rem 0.68rem;
+  border-radius: 0.25rem;
+
+  color: var(--color-primary);
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.card-bottom .add-to-cart .count .plus{
+  background-color: var(--color-secondary);
+  padding: 0.5rem 0.68rem;
+  border-radius: 0.25rem;
+
+  color: var(--color-primary);
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.card-bottom .add-to-cart button.add-item{
+  width: 100%;
+  border: none;
+  background-color: var(--color-secondary);
+  padding: 0.5rem 1rem;
+  color: var(--neutral-01);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+}
 
 .card-detail {
   display: flex;
@@ -1833,12 +1886,12 @@ footer {
   }
 
   .tags {
-    display: block;
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1.5rem;
 
     position: absolute;
     top: 0.5rem;

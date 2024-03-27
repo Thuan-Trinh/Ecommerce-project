@@ -1,3 +1,4 @@
+//thêm mảng product màn product
 (function createProduct() {
   if (localStorage.getItem('cardsInfor') == null) {
     let cardsInfor = [
