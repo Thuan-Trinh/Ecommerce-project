@@ -1,9 +1,9 @@
 //thêm mảng product màn product
 (function createProduct() {
-  if (localStorage.getItem('cardsInfor') == null) {
-    let cardsInfor = [
+  if (localStorage.getItem('chairCardsInfor') == null) {
+    let chairCardsInfor = [
         {
-          id: 'chair-1',
+          id: 'cata-chair-1',
           image: "./assets/images/item-img-1.png",
           name: "1.3 Chair",
           price: "$69.90",
@@ -11,14 +11,14 @@
 
         },
         {
-          id: 'chair-2',
+          id: 'cata-chair-2',
 
           image: "./assets/images/item-img-2.png",
           name: "Kuyu Desk",
           price: "$79.90",
         },
         {
-          id: 'chair-3',
+          id: 'cata-chair-3',
 
           image: "./assets/images/item-img-3.png",
           name: "Neat Noon",
@@ -27,7 +27,7 @@
 
         },
         {
-          id: 'chair-4',
+          id: 'cata-chair-4',
 
           image: "./assets/images/item-img-4.png",
           name: "1.3 Chair",
@@ -35,7 +35,7 @@
           arrival: "New",
         },
         {
-          id: 'chair-5',
+          id: 'cata-chair-5',
 
           image: "./assets/images/item-img-5.png",
           name: "Morph",
@@ -44,7 +44,7 @@
 
         },
         {
-          id: 'chair-6',
+          id: 'cata-chair-6',
 
           image: "./assets/images/item-img-6.png",
           name: "1.3 Chair",
@@ -53,12 +53,125 @@
         
         // Thêm các phần tử khác vào mảng tương tự như trên
       ];
-    localStorage.setItem('cardsInfor', JSON.stringify(cardsInfor));
+    localStorage.setItem('chairCardsInfor', JSON.stringify(chairCardsInfor));
+  };
+  
+})();
+//mảng sản phẩm novelties
+(function createProductNovel() {
+  if (localStorage.getItem('novelCardInfor') == null) {
+    let novelCardInfor = [
+        {
+          id: 'cata-novel-1',
+          image: "./assets/images/novel-img-1.png",
+          name: "Novelties 01",
+          price: "$69.90",
+          arrival: "New",
+
+        },
+        {
+          id: 'cata-novel-2',
+
+          image: "./assets/images/novel-img-2.png",
+          name: "Novelties 02",
+          price: "$79.90",
+        },
+        {
+          id: 'cata-novel-3',
+
+          image: "./assets/images/novel-img-3.png",
+          name: "Novelties 03",
+          price: "$89.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-novel-4',
+
+          image: "./assets/images/novel-img-4.png",
+          name: "Novelties 04",
+          price: "$99.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-novel-5',
+
+          image: "./assets/images/novel-img-5.jpg",
+          name: "Novelties 05",
+          price: "$109.90",
+
+        },
+        {
+          id: 'cata-novel-6',
+
+          image: "./assets/images/novel-img-6.png",
+          name: "Novelties 06",
+          price: "$119.90",
+        },
+        
+        // Thêm các phần tử khác vào mảng tương tự như trên
+      ];
+    localStorage.setItem('novelCardInfor', JSON.stringify(novelCardInfor));
   };
   
 })();
 
+//mảng sản phẩm tables
+(function createProductTables() {
+  if (localStorage.getItem('tableCardInfor') == null) {
+    let tableCardInfor = [
+        {
+          id: 'cata-table-1',
+          image: "./assets/images/table-img-1.jpg",
+          name: "Table 01",
+          price: "$69.90",
+          arrival: "New",
 
+        },
+        {
+          id: 'cata-table-2',
+
+          image: "./assets/images/table-img-2.jpg",
+          name: "Table 02",
+          price: "$79.90",
+        },
+        {
+          id: 'cata-table-3',
+
+          image: "./assets/images/table-img-3.jpg",
+          name: "Table 03",
+          price: "$89.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-table-4',
+
+          image: "./assets/images/table-img-4.jpg",
+          name: "Table 04",
+          price: "$99.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-table-5',
+
+          image: "./assets/images/table-img-5.jpg",
+          name: "Table 05",
+          price: "$109.90",
+
+        },
+        {
+          id: 'cata-table-6',
+
+          image: "./assets/images/table-img-6.jpg",
+          name: "Table 06",
+          price: "$119.90",
+        },
+        
+        // Thêm các phần tử khác vào mảng tương tự như trên
+      ];
+    localStorage.setItem('tableCardInfor', JSON.stringify(tableCardInfor));
+  };
+  
+})();
 
 // thêm mảng product home
 (function createHomeCard() {

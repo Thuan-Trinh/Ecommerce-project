@@ -1,55 +1,61 @@
-(function () {
-  // Tạo card từ thẻ có sẵn, với data thẻ lấy từ js khác đã đẩy lên local
-  // catalog page
-  {
-    //gọi card container
-    const gridCardsContainer = document.getElementById("grid-item-cards");
-    //gọi mảng từ local
-    const cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
-    console.log(cataCards);
 
-    const cardTemplate = document.querySelector(".card");
+// (function () {
+//   // Tạo card từ thẻ có sẵn, với data thẻ lấy từ js khác đã đẩy lên local
+//   const novelProducts = document.querySelector('.novelProducts');
+//   const chairProducts = document.querySelector('.chairProducts');
+// novelProducts.addEventListener('click', ()=>{
+//   novelProducts.classList.add('side-bar-active');
+// });
+//   console.log(novelProducts, chairProducts);
+//   // catalog page
+//     //gọi card container
+//     const gridCardsContainer = document.getElementById("grid-item-cards");
+//     //gọi mảng từ local
+//     const cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
+//     console.log(cataCards);
 
-    if (cardTemplate) {
-      cataCards.forEach(function (cardInfor) {
-        let cardClone = cardTemplate.cloneNode(true);
-        cardClone.querySelector(".card-img").src = cardInfor.image;
-        cardClone.querySelector(".card-name").textContent = cardInfor.name;
-        cardClone.querySelector(".card-price").textContent = cardInfor.price;
-        // cardClone.style.display = "block";
-        const tags = cardClone.querySelector(".tags");
-        if (cardInfor.arrival === "New") {
-          tags.style.visibility = "visible";
-        } else {
-          tags.style.visibility = "hidden";
-        }
-        gridCardsContainer.appendChild(cardClone);
-      });
-      cardTemplate.style.display = "none";
-    }
+//     const cardTemplate = document.querySelector(".card");
+
+//     if (cardTemplate) {
+//       cataCards.forEach(function (cardInfor) {
+//         let cardClone = cardTemplate.cloneNode(true);
+//         cardClone.querySelector(".card-img").src = cardInfor.image;
+//         cardClone.querySelector(".card-name").textContent = cardInfor.name;
+//         cardClone.querySelector(".card-price").textContent = cardInfor.price;
+//         // cardClone.style.display = "block";
+//         const tags = cardClone.querySelector(".tags");
+//         if (cardInfor.arrival === "New") {
+//           tags.style.visibility = "visible";
+//         } else {
+//           tags.style.visibility = "hidden";
+//         }
+//         gridCardsContainer.appendChild(cardClone);
+//       });
+//       cardTemplate.style.display = "none";
+//   }
+
+// })();
+{
+  // Ẩn hiển side menu
+
+  const sideMenu = document.getElementById("side-menu");
+  const showSideMenu = document.getElementById("toggle-menu");
+  const hideSideMenu = document.getElementById("close-menu");
+  const overlay = document.getElementById("overlay");
+
+  if (showSideMenu && hideSideMenu && sideMenu && overlay) {
+    showSideMenu.onclick = () => {
+      sideMenu.classList.toggle("show-side-menu");
+      overlay.style.display = "block";
+    };
+
+    hideSideMenu.onclick = () => {
+      sideMenu.classList.remove("show-side-menu");
+      overlay.style.display = "none";
+    };
   }
+}
 
-  {
-    // Ẩn hiển side menu
-
-    const sideMenu = document.getElementById("side-menu");
-    const showSideMenu = document.getElementById("toggle-menu");
-    const hideSideMenu = document.getElementById("close-menu");
-    const overlay = document.getElementById("overlay");
-
-    if (showSideMenu && hideSideMenu && sideMenu && overlay) {
-      showSideMenu.onclick = () => {
-        sideMenu.classList.toggle("show-side-menu");
-        overlay.style.display = "block";
-      };
-
-      hideSideMenu.onclick = () => {
-        sideMenu.classList.remove("show-side-menu");
-        overlay.style.display = "none";
-      };
-    }
-  }
-})();
 
 //function toggle cho 2 btn trong phần subheader
 
@@ -103,30 +109,3 @@
   }
 })();
 
-{
-  const homeCardNovelContainer = document.querySelector(
-    ".novelties-section .novel-container"
-  );
-
-  const homeCardList = JSON.parse(localStorage.getItem("homeCard"));
-  console.log(homeCardList);
-
-  if (homeCardList) {
-    const listCardNovel = homeCardList.map((product) => {
-      const { id, image, name, title } = product;
-
-      return `
-    <div class="novel-items">
-                      <div class="img-card">
-                          <img src="${image}" alt="${image}" class="novel-card-img">
-                      </div>
-                      <div class="novel-title">
-                          <h6 class="novel-name">${name}</h6>
-                          <p class="novel-title">${title}</p>
-                      </div>
-                  </div>
-    `;
-    });
-    homeCardNovelContainer.innerHTML = listCardNovel.join("");
-  }
-}
