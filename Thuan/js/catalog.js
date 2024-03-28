@@ -61,7 +61,7 @@ function displayProducts(productsInfor) { //function hiển thị sản phẩm
         cardTemplate.style.display = "none";
     }
 }
-const productsInfoKeys = ["novelCardInfor", "chairCardsInfor", "tableCardInfor",];
+const productsInfoKeys = ["novelCardInfor", "chairCardsInfor", "tableCardInfor","sofasCardInfor"];
 
 const toggleElements = [
     document.querySelector('.novelProducts'),

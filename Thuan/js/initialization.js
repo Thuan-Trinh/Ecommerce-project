@@ -173,6 +173,86 @@
   
 })();
 
+//mảng sản phẩm sofas
+(function createProductTables() {
+  if (localStorage.getItem('sofasCardInfor') == null) {
+    let sofasCardInfor = [
+        {
+          id: 'cata-sofas-1',
+          image: "./assets/images/sofa-img-1.jpg",
+          name: "Sofas 01",
+          price: "$69.90",
+          arrival: "New",
+
+        },
+        {
+          id: 'cata-sofas-2',
+
+          image: "./assets/images/sofa-img-2.jpg",
+          name: "Sofas 02",
+          price: "$79.90",
+        },
+        {
+          id: 'cata-sofas-3',
+
+          image: "./assets/images/sofa-img-3.jpg",
+          name: "Sofas 03",
+          price: "$89.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-sofas-4',
+
+          image: "./assets/images/sofa-img-4.jpg",
+          name: "Sofas 04",
+          price: "$99.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-sofas-5',
+
+          image: "./assets/images/sofa-img-5.jpg",
+          name: "Sofas 05",
+          price: "$109.90",
+
+        },
+        {
+          id: 'cata-sofas-6',
+
+          image: "./assets/images/sofa-img-6.jpg",
+          name: "Sofas 06",
+          price: "$119.90",
+        },
+        {
+          id: 'cata-sofas-7',
+
+          image: "./assets/images/sofa-img-7.jpg",
+          name: "Sofas 07",
+          price: "$119.90",
+        },
+        {
+          id: 'cata-sofas-8',
+
+          image: "./assets/images/sofa-img-8.jpg",
+          name: "Sofas 08",
+          price: "$119.90",
+        },
+        {
+          id: 'cata-sofas-9',
+
+          image: "./assets/images/sofa-img-9.jpg",
+          name: "Sofas 09",
+          price: "$119.90",
+        },
+        
+        
+        // Thêm các phần tử khác vào mảng tương tự như trên
+      ];
+    localStorage.setItem('sofasCardInfor', JSON.stringify(sofasCardInfor));
+  };
+  
+})();
+
 // thêm mảng product home
 (function createHomeCard() {
   if (localStorage.getItem('homeCard') == null) {
