@@ -1,40 +1,4 @@
 
-// (function () {
-//   // Tạo card từ thẻ có sẵn, với data thẻ lấy từ js khác đã đẩy lên local
-//   const novelProducts = document.querySelector('.novelProducts');
-//   const chairProducts = document.querySelector('.chairProducts');
-// novelProducts.addEventListener('click', ()=>{
-//   novelProducts.classList.add('side-bar-active');
-// });
-//   console.log(novelProducts, chairProducts);
-//   // catalog page
-//     //gọi card container
-//     const gridCardsContainer = document.getElementById("grid-item-cards");
-//     //gọi mảng từ local
-//     const cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
-//     console.log(cataCards);
-
-//     const cardTemplate = document.querySelector(".card");
-
-//     if (cardTemplate) {
-//       cataCards.forEach(function (cardInfor) {
-//         let cardClone = cardTemplate.cloneNode(true);
-//         cardClone.querySelector(".card-img").src = cardInfor.image;
-//         cardClone.querySelector(".card-name").textContent = cardInfor.name;
-//         cardClone.querySelector(".card-price").textContent = cardInfor.price;
-//         // cardClone.style.display = "block";
-//         const tags = cardClone.querySelector(".tags");
-//         if (cardInfor.arrival === "New") {
-//           tags.style.visibility = "visible";
-//         } else {
-//           tags.style.visibility = "hidden";
-//         }
-//         gridCardsContainer.appendChild(cardClone);
-//       });
-//       cardTemplate.style.display = "none";
-//   }
-
-// })();
 {
   // Ẩn hiển side menu
 

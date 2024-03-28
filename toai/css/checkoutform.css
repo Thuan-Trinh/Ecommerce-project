@@ -1,0 +1,257 @@
+.checkout-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form {
+    display: flex;
+    max-width: 643px; /*HARD SET*/
+    width: 643px; /*HARD SET*/
+    padding: 2rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+
+    border: none;
+}
+
+p.form-title {
+    color: #000;
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    /* Headline 7 */
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px; /* 140% */
+}
+
+.divide-input {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.divided-element {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.divided-element input {
+    width: calc(100% - 4rem);
+}
+
+form label {
+    color: var(--neutral-04100, #6C7275);
+    /* Hairline 2 */
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 12px; /* 100% */
+    text-transform: uppercase;
+}
+
+form input {
+    border-radius: 6px;
+    border: 1px solid var(--Black-300, #CBCBCB);
+    background: var(--White, #FFF);
+    height: 40px;
+    padding: 0px 16px; /*HARD SET*/
+    gap: 8px;
+}
+
+
+form input[type="text"]::placeholder {
+    color: #6C7275;
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    /* Body 2 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+}
+
+form input[type="text"]:focus {
+    border: 1px solid var(--Black-300, #CBCBCB);
+}
+
+form input::placeholder {
+    color: #6C7275;
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    /* Body 2 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+}
+
+.full-width-element {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.full-width-element > input {
+    width: calc(100% - 4rem);
+}
+
+.checkbox label {
+    color: var(--neutral-04100, #6C7275);
+    font-feature-settings: 'clig' off, 'liga' off;
+    /* Body 2 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+}
+
+.checkbox {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+.checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox label {
+    margin-left: 1rem;
+    padding-left: 25px;
+}
+
+/* Create a custom checkbox */
+.checkbox label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover label:before {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input[type="checkbox"]:checked + label:before {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox label:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input[type="checkbox"]:checked + label:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox label:after {
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.checkout-details .optionFrame svg{
+    display: none;
+
+    margin-right: 1rem;
+}
+
+.payment-method-choose {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form .optionFrame {
+    width: calc(100% - 2rem);
+}
+
+button.placeOrder {
+    border-radius: 8px;
+    background: var(--primary, #000);
+    width: calc(100% - 5rem);
+    height: 3.2rem;
+    color: var(--neutral-1, #FFF);
+    text-align: center;
+    /* Headline h1 Med CAPS */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px; /* 140% */
+    text-transform: uppercase;
+
+    margin: 2rem 2rem;
+}
+
+.placeOrderPhone {
+    display: none;
+}
+
+@media screen and (max-width: 790px) {
+    .placeOrderPhone {
+        display: block;
+    }
+    
+    .placeOrderDesktop {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    form{
+        width: auto;
+    } 
+}
+
+@media screen and (max-width: 512px) {
+    .divide-input {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .divided-element {
+        width: 100%;
+    }
+
+    .divided-element > input {
+        width: calc(100% - 4rem);
+    }
+}
