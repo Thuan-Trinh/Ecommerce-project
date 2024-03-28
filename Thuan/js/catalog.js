@@ -68,7 +68,8 @@ const productsInfoKeys = [
   "sofasCardInfor",
   "bedCardInfor",
   "shelvesCardInfor",
-  "officeCardInfor"
+  "officeCardInfor",
+  "lampCardInfor",
 ];
 
 const toggleElements = [
