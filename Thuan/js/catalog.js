@@ -1,113 +1,120 @@
-// (function () {
-//     // catalog page
-//     //gọi card container
-//     const gridCardsContainer = document.getElementById("grid-item-cards");
-//     //gọi mảng từ local
-//     const cataCards = JSON.parse(localStorage.getItem("cardsInfor"));
-//     console.log(cataCards);
 
-//     const cardTemplate = document.querySelector(".card");
-
-//     if (cardTemplate) {
-//         cataCards.forEach(function (cardInfor) {
-//             let cardClone = cardTemplate.cloneNode(true);
-//             cardClone.querySelector(".card-img").src = cardInfor.image;
-//             cardClone.querySelector(".card-name").textContent = cardInfor.name;
-//             cardClone.querySelector(".card-price").textContent = cardInfor.price;
-//             // cardClone.style.display = "block";
-//             const tags = cardClone.querySelector(".tags");
-//             if (cardInfor.arrival === "New") {
-//                 tags.style.visibility = "visible";
-//             } else {
-//                 tags.style.visibility = "hidden";
-//             }
-//             gridCardsContainer.appendChild(cardClone);
-//         });
-//         cardTemplate.style.display = "none";
-//     }
-
-// })();
-
-function displayProducts(productsInfor) {
-  //function hiển thị sản phẩm
-  // Tạo card từ thẻ có sẵn, với data thẻ lấy từ js khác đã đẩy lên local
-  // catalog page
-  //gọi card container
+  const displayProducts = (productsInfor) => {
   const gridCardsContainer = document.getElementById("grid-item-cards");
-  //gọi mảng từ local
   const cataCards = JSON.parse(localStorage.getItem(productsInfor));
-  console.log(cataCards);
 
-  const cardTemplate = document.querySelector(".card");
+  if (gridCardsContainer && cataCards) {
+    const cardTemplate = document.querySelector(".card");
+    if (cardTemplate) {
+      gridCardsContainer.innerHTML = "";
 
-  if (cardTemplate) {
-    // Clear the current products displayed in the grid
-    gridCardsContainer.innerHTML = "";
+      cataCards.forEach(({ image, name, price, arrival }) => {
+        const cardClone = cardTemplate.cloneNode(true);
+        cardClone.querySelector(".card-img").src = image;
+        cardClone.querySelector(".card-name").textContent = name;
+        cardClone.querySelector(".card-price").textContent = price;
+        cardClone.querySelector(".tags").style.visibility = arrival === "New" ? "visible" : "hidden";
+        gridCardsContainer.appendChild(cardClone);
+      });
 
-    cataCards.forEach(function (cardInfor) {
-      let cardClone = cardTemplate.cloneNode(true);
-      cardClone.querySelector(".card-img").src = cardInfor.image;
-      cardClone.querySelector(".card-name").textContent = cardInfor.name;
-      cardClone.querySelector(".card-price").textContent = cardInfor.price;
-      // cardClone.style.display = "block";
-      const tags = cardClone.querySelector(".tags");
-      if (cardInfor.arrival === "New") {
-        tags.style.visibility = "visible";
-      } else {
-        tags.style.visibility = "hidden";
-      }
-      gridCardsContainer.appendChild(cardClone);
-    });
-    cardTemplate.style.display = "none";
+      cardTemplate.style.display = "none";
+    }
   }
-}
+};
+
+//Khai báo mảng các card thông tin
 const productsInfoKeys = [
-  "novelCardInfor",
-  "chairCardsInfor",
-  "tableCardInfor",
-  "sofasCardInfor",
-  "bedCardInfor",
-  "shelvesCardInfor",
-  "officeCardInfor",
-  "lampCardInfor",
+  "novelCardInfor", "chairCardsInfor", "tableCardInfor", "sofasCardInfor",
+  "bedCardInfor", "shelvesCardInfor", "officeCardInfor", "lampCardInfor"
 ];
 
-const toggleElements = [
-  document.querySelector(".novelProducts"),
-  document.querySelector(".chairProducts"),
-  document.querySelector(".tableProducts"),
-  document.querySelector(".sofasProducts"),
-  document.querySelector(".bedProducts"),
-  document.querySelector(".shelvesProducts"),
-  document.querySelector(".officeProducts"),
-  document.querySelector(".lampProducts"),
-];
-
-// Thiết lập novelProducts có class side-bar-active ban đầu
+//DOM các phần tử 
+const toggleElements = productsInfoKeys.map((key) => document.querySelector(`.body-content .${key.split('Card')[0]}Products`));
+const clickHandlers = productsInfoKeys.map((key) => () => displayProducts(key));
+console.log(toggleElements);
+//Duyệt mảng các phần tử
 toggleElements[0].classList.add("side-bar-active");
-
-// Array of functions to handle click event for each toggle element
-const clickHandlers = productsInfoKeys.map((key) => {
-  return function () {
-    displayProducts(key);
-  };
-});
-
-// Add click event listener to each toggle element
 toggleElements.forEach((element, index) => {
   element.addEventListener("click", () => {
-    // Remove side-bar-active class from all elements
-    toggleElements.forEach((otherElement) => {
-      otherElement.classList.remove("side-bar-active");
-    });
-
-    // Add side-bar-active class to the clicked element
+    toggleElements.forEach((otherElement) => otherElement.classList.remove("side-bar-active"));
     element.classList.add("side-bar-active");
-
-    // Call the corresponding displayProducts function
     clickHandlers[index]();
+    localStorage.setItem("selectedElementIndex", index);
   });
 });
 
-// Call the function to display products for the initial category
+// Khi trang được tải lại, kiểm tra xem có chỉ mục được lưu không
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedElementIndex = localStorage.getItem("selectedElementIndex");
+  if (selectedElementIndex !== null) {
+    const selectedElement = toggleElements[selectedElementIndex];
+    if (selectedElement) {
+      selectedElement.focus(); // Tập trung vào phần tử đã chọn
+    }
+  }
+});
+
 clickHandlers[0]();
+
+
+
+// function filter mobile
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterBtn = document.querySelector(
+      ".grid-content .arrange-btns .left-side-arrange .ic-filter"
+    );
+    const filterTabs = document.querySelector(
+      ".grid-content .arrange-btns .left-side-arrange .filter-tabs"
+    );
+    const productsCardInforKeys = [
+      "novelCardInfor", "chairCardsInfor", "tableCardInfor", "sofasCardInfor",
+      "bedCardInfor", "shelvesCardInfor", "officeCardInfor", "lampCardInfor"
+    ];
+    const filterTabsMobile = productsCardInforKeys.map((key) => filterTabs.querySelector(`.${key.split('Card')[0]}Products`));
+    console.log(filterTabsMobile);
+    const clickTabs = productsCardInforKeys.map((key) => () => displayProducts(key));
+
+    filterTabsMobile[0].classList.add("side-bar-active");
+
+    console.log(filterBtn, filterTabs);
+  
+    if (filterBtn && filterTabs) {
+      filterBtn.onclick = (event) => {
+        event.stopPropagation(); // Ngăn chặn sự kiện click từ việc lan truyền lên các phần tử cha
+        if (
+          filterTabs.style.display === "none" ||
+          filterTabs.style.display === ""
+        ) {
+          filterTabs.style.display = "flex";
+        } else {
+          filterTabs.style.display = "none";
+        }
+      };
+  
+      document.addEventListener("click", (event) => {
+        // Kiểm tra xem phần tử được click có phải là filterTabs hay không
+        const isClickedInsideFilterTabs = filterTabs.contains(event.target);
+  
+        if (!isClickedInsideFilterTabs) {
+          filterTabs.style.display = "none";
+        }
+      });
+    }
+    filterTabsMobile.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        filterTabsMobile.forEach((otherElement) => otherElement.classList.remove("side-bar-active"));
+        element.classList.add("side-bar-active");
+        filterTabs.style.display = "none";
+        clickTabs[index]();
+      });
+    });
+    clickTabs[0]();
+  });
+
+
+
+
+
+

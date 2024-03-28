@@ -48,28 +48,3 @@
   }
 })();
 
-// function filter mobile
-(function () {
-  const filterBtn = document.querySelector(
-    ".grid-content .arrange-btns .left-side-arrange .ic-filter"
-  );
-  const filterTabs = document.querySelector(
-    ".grid-content .arrange-btns .left-side-arrange .filter-tabs"
-  );
-
-  console.log(filterBtn, filterTabs);
-
-  if (filterBtn && filterTabs) {
-    filterBtn.onclick = () => {
-      if (
-        filterTabs.style.display === "none" ||
-        filterTabs.style.display === ""
-      ) {
-        filterTabs.style.display = "flex";
-      } else {
-        filterTabs.style.display = "none";
-      }
-    };
-  }
-})();
-
