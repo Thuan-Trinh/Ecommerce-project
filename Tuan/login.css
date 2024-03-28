@@ -11,10 +11,9 @@ body {
   border-radius: 8px;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 80px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .login-form {
@@ -73,36 +72,6 @@ body {
   border-bottom: 1px solid #E0E6EB;
   border-radius: 4px;
   outline: none;
-}
-.password-field {
-  position: relative; /* Thêm dòng này để có thể sử dụng position absolute cho icon con mắt */
-}
-.password-field .eye-icon{
-  position: absolute;
-  right: 0;
-  top: 70%; /* Đưa icon con mắt về giữa theo chiều dọc */
-  transform: translateY(-50%); /* Điều chỉnh vị trí chính xác */
-  width: 24px;
-  height: 24px;
-  background-image: url("../1/eye.jpg");
-  cursor: pointer;
-}
-.password-field .eye-icon.visible {
-  background-image: url("../1/eye1.png"); 
-  }
-
-.password-field .eye-icon.visible:hover {
-  filter: brightness(90%); /* Hiệu ứng khi di chuột qua */
-}
-
-.password-field .eye-icon.visible::before {
-  content: "Hide Password";
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  color: #52667A;
 }
 
 .form-options {
