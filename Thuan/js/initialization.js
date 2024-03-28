@@ -318,6 +318,137 @@
   
 })();
 
+//mảng sản phẩm SHELVES
+(function createProductShelves() {
+  if (localStorage.getItem('shelvesCardInfor') == null) {
+    let shelvesCardInfor = [
+        {
+          id: 'cata-shelves-1',
+          image: "./assets/images/shelves-img-1.jpg",
+          name: "Shelves 01",
+          price: "$69.90",
+          arrival: "New",
+
+        },
+        {
+          id: 'cata-shelves-2',
+
+          image: "./assets/images/shelves-img-2.jpg",
+          name: "Shelves 02",
+          price: "$79.90",
+        },
+        {
+          id: 'cata-shelves-3',
+
+          image: "./assets/images/shelves-img-3.jpg",
+          name: "Shelves 03",
+          price: "$89.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-shelves-4',
+
+          image: "./assets/images/shelves-img-4.jpg",
+          name: "Shelves 04",
+          price: "$99.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-shelves-5',
+
+          image: "./assets/images/shelves-img-5.jpg",
+          name: "Shelves 05",
+          price: "$109.90",
+
+        },
+        {
+          id: 'cata-shelves-6',
+
+          image: "./assets/images/shelves-img-6.jpg",
+          name: "Shelves 06",
+          price: "$119.90",
+        },
+        {
+          id: 'cata-shelves-7',
+
+          image: "./assets/images/shelves-img-7.jpg",
+          name: "Shelves 07",
+          price: "$119.90",
+        },
+        {
+          id: 'cata-shelves-8',
+
+          image: "./assets/images/shelves-img-8.jpg",
+          name: "Shelves 07",
+          price: "$119.90",
+        },
+        
+        // Thêm các phần tử khác vào mảng tương tự như trên
+      ];
+    localStorage.setItem('shelvesCardInfor', JSON.stringify(shelvesCardInfor));
+  };
+  
+})();
+
+//mảng sản phẩm OFFICES
+(function createProductOffice() {
+  if (localStorage.getItem('officeCardInfor') == null) {
+    let officeCardInfor = [
+        {
+          id: 'cata-office-1',
+          image: "./assets/images/office-img-1.jpg",
+          name: "Offices 01",
+          price: "$69.90",
+          arrival: "New",
+
+        },
+        {
+          id: 'cata-office-2',
+
+          image: "./assets/images/office-img-2.jpg",
+          name: "Offices 02",
+          price: "$79.90",
+        },
+        {
+          id: 'cata-office-3',
+
+          image: "./assets/images/office-img-3.jpg",
+          name: "Offices 03",
+          price: "$89.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-office-4',
+
+          image: "./assets/images/office-img-4.jpg",
+          name: "Offices 04",
+          price: "$99.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-office-5',
+
+          image: "./assets/images/office-img-5.jpg",
+          name: "Offices 05",
+          price: "$109.90",
+
+        },
+        {
+          id: 'cata-office-6',
+
+          image: "./assets/images/office-img-6.jpg",
+          name: "Offices 06",
+          price: "$119.90",
+        },
+       
+        // Thêm các phần tử khác vào mảng tương tự như trên
+      ];
+    localStorage.setItem('officeCardInfor', JSON.stringify(officeCardInfor));
+  };
+  
+})();
+
+
 // thêm mảng product home
 (function createHomeCard() {
   if (localStorage.getItem('homeCard') == null) {
