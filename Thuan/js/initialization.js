@@ -174,7 +174,7 @@
 })();
 
 //mảng sản phẩm sofas
-(function createProductTables() {
+(function createProductSofa() {
   if (localStorage.getItem('sofasCardInfor') == null) {
     let sofasCardInfor = [
         {
@@ -249,6 +249,71 @@
         // Thêm các phần tử khác vào mảng tương tự như trên
       ];
     localStorage.setItem('sofasCardInfor', JSON.stringify(sofasCardInfor));
+  };
+  
+})();
+
+//mảng sản phẩm beds
+(function createProductBeds() {
+  if (localStorage.getItem('bedCardInfor') == null) {
+    let bedCardInfor = [
+        {
+          id: 'cata-beds-1',
+          image: "./assets/images/bed-img-1.jpg",
+          name: "Sofas 01",
+          price: "$69.90",
+          arrival: "New",
+
+        },
+        {
+          id: 'cata-beds-2',
+
+          image: "./assets/images/bed-img-2.jpg",
+          name: "Sofas 02",
+          price: "$79.90",
+        },
+        {
+          id: 'cata-beds-3',
+
+          image: "./assets/images/bed-img-3.jpg",
+          name: "Sofas 03",
+          price: "$89.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-beds-4',
+
+          image: "./assets/images/bed-img-4.jpg",
+          name: "Sofas 04",
+          price: "$99.90",
+          arrival: "New",
+        },
+        {
+          id: 'cata-beds-5',
+
+          image: "./assets/images/bed-img-5.jpg",
+          name: "Sofas 05",
+          price: "$109.90",
+
+        },
+        {
+          id: 'cata-beds-6',
+
+          image: "./assets/images/bed-img-6.jpg",
+          name: "Sofas 06",
+          price: "$119.90",
+        },
+        {
+          id: 'cata-beds-7',
+
+          image: "./assets/images/bed-img-7.jpg",
+          name: "Sofas 07",
+          price: "$119.90",
+        },
+        
+        // Thêm các phần tử khác vào mảng tương tự như trên
+      ];
+    localStorage.setItem('bedCardInfor', JSON.stringify(bedCardInfor));
   };
   
 })();
