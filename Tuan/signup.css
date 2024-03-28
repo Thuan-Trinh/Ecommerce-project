@@ -12,7 +12,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 80px;
   }
@@ -173,41 +173,41 @@ body {
   @media (max-width: 768px) {
     .container {
         flex-direction: column;
-        justify-content: center; /* Thêm vào để căn giữa theo chiều dọc */
+        justify-content: center; 
         align-items: center;
         padding: 20px;
         gap: 40px;
-        min-height: 100vh; /* Đảm bảo container chiếm toàn bộ chiều cao màn hình */
-        box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể */
+        min-height: 100vh; 
+        box-sizing: border-box;
     }
   
     img {
-      display: none; /* Ẩn hình ảnh trên các thiết bị có độ rộng nhỏ hơn 768px */
+      display: none; 
     }
   
     .form-container {
-      width: 100%; /* Cho phép container của form co giãn theo chiều rộng của container chứa nó */
-      max-width: 390px; /* Giới hạn chiều rộng tối đa */
+      width: 100%;
+      max-width: 390px;
     }
     
   
   @media (max-width: 480px) {
     .container {
-      padding: 20px; /* Điều chỉnh padding cho đều ở cả 4 phía, tăng từ 10px lên 20px */
+      padding: 20px; 
       gap: 20px;
     }
   
     .title {
-      font-size: 24px; /* Giảm kích thước font cho tiêu đề */
+      font-size: 24px; 
       line-height: 28px;
     }
   
     .signin-text, .form-group label, .checkbox label {
-      font-size: 14px; /* Giảm kích thước font cho văn bản */
+      font-size: 14px;
     }
   
     button {
-      font-size: 16px; /* Giảm kích thước font cho nút */
+      font-size: 16px;
       size:100%;
     }
   }
