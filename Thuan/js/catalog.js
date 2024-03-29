@@ -58,7 +58,7 @@ clickHandlers[0]();
 
 
 
-// function filter mobile
+// function filter mobile thay đổi sản phẩm
 
 
   document.addEventListener("DOMContentLoaded", () => {

@@ -1178,7 +1178,7 @@ footer {
   gap: 1rem;
 }
 
-#grid-content-2 .grid-card-1 .card-detail span {
+#grid-content-2 .card-detail span {
   color: var(--neutral-05);
   font-family: "Inter";
   font-size: 1rem;
