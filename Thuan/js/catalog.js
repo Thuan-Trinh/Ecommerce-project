@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         filterTabs.style.display = "flex";
       } else {
-        filterTabs.style.display = "none";
+        filterTabs.style.display = "none";   
       }
     };
 
@@ -189,3 +189,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+{
+//check có thông tin log in hay không để hiện hình ảnh user
+  const usersData = JSON.parse(localStorage.getItem('usersData'));
+  console.log(usersData);
+  
+  if (usersData) {
+    const personalPage = document.querySelector('.icons a');
+    const iconPersonal = document.querySelector('.ic-personal');
+    console.log(iconPersonal);
+    console.log(personalPage);
+    iconPersonal.src = "./assets/images/ic-user.png";
+    personalPage.href = '#';
+  }
+}

@@ -27,3 +27,14 @@
     homeCardNovelContainer.innerHTML = listCardNovel.join("");
   }
 }
+const usersData = JSON.parse(localStorage.getItem('usersData'));
+console.log(usersData);
+
+if (usersData) {
+  const personalPage = document.querySelector('.header-nav .icons a');
+  const iconPersonal = document.querySelector('.header-nav .icons .ic-personal');
+  console.log(iconPersonal);
+  console.log(personalPage);
+  iconPersonal.src = "./Thuan/assets/images/ic-user.png";
+  personalPage.href = '#';
+}

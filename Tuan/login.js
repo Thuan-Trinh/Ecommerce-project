@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const user = usersData.find(user => user.email === email && user.password === password);
         if (user) {
             
-            window.location.href = "home.html";
+            window.location.href = "../index.html";
+            
         } else {
             
             alert("Invalid email or password. Please try again.");

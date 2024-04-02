@@ -4,10 +4,10 @@
 function setEventQuantityButton() { //Nút tăng giảm số lượng trong row --> Tác động đến subtotal và cart summary
     let quantityPluses = document.getElementsByClassName('quantityButton-plus');
     for (let element of quantityPluses) {
-        element.addEventListener('click', function() {
-            let currentRow = element.parentElement.parentElement.parentElement.parentElement; 
+        element.addEventListener('click', function () {
+            let currentRow = element.parentElement.parentElement.parentElement.parentElement;
             //Không truyền current row vào reloadRow vì reloadRow sẽ reload cả mobile lẫn desktop
-            
+
             let ID = currentRow.querySelector('p.id').textContent;
 
             plusQuantity(ID);
@@ -19,10 +19,10 @@ function setEventQuantityButton() { //Nút tăng giảm số lượng trong row 
 
     let quantityMinuses = document.getElementsByClassName('quantityButton-minus');
     for (let element of quantityMinuses) {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function () {
             let currentRow = element.parentElement.parentElement.parentElement.parentElement;
             let ID = currentRow.querySelector('p.id').textContent;
-            
+
             minusQuantity(ID);
             reloadRow(ID);
             loadTotal();
@@ -34,7 +34,7 @@ function setEventQuantityButton() { //Nút tăng giảm số lượng trong row 
 function setEventShippingRadios() {
     let radioList = document.querySelectorAll('.shippingOptions .optionFrame input');
     for (let element of radioList) {
-        element.addEventListener('change', function() {
+        element.addEventListener('change', function () {
             changeParentBackgroundColor(element);
             setShipping(element.id);
             loadTotal();
@@ -45,7 +45,7 @@ function setEventShippingRadios() {
 function setEventRemoveButton() {
     let removeButtonList = document.querySelectorAll('.remove');
     for (let element of removeButtonList) {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function () {
             let removeID = element.id;
             let elementID = removeID.substring(removeID.indexOf('-') + 1);
 
@@ -59,7 +59,7 @@ function setEventRemoveButton() {
 
 function setEventCouponCode() {
     let couponForm = document.getElementById('couponForm');
-    couponForm.addEventListener('submit', function(event) {
+    couponForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
         let couponInput = document.querySelector('input#coupon');
@@ -69,7 +69,7 @@ function setEventCouponCode() {
 
 function setEventCheckoutBtn() {
     let checkoutBtn = document.getElementById('btn-checkout');
-    checkoutBtn.addEventListener('click', function() {
+    checkoutBtn.addEventListener('click', function () {
         // Navigate to the next HTML page
         window.location.href = 'checkout.html'; // Replace 'next-page.html' with the URL of the next page
     });
@@ -103,7 +103,7 @@ function checkCheckedRadioButton() {
 
 function checkPaymentMethod() {
     var radioButtons = document.querySelectorAll('input[type="radio"][name="payment-method"]');
-    radioButtons.forEach(function(radioButton) {
+    radioButtons.forEach(function (radioButton) {
         toggleSVG(radioButton);
         changeParentBackgroundColor(radioButton);
     });
@@ -122,4 +122,19 @@ function paymentChecked(paymentRadio) {
     changeParentBackgroundColor(paymentRadio);
     checkPaymentMethod();
     toggleSVG(paymentRadio);
+}
+
+{
+    //check có thông tin log in hay không để hiện hình ảnh user
+    const usersData = JSON.parse(localStorage.getItem('usersData'));
+    console.log(usersData);
+
+    if (usersData) {
+        const personalPage = document.querySelectorAll('.icons a');
+        const iconPersonal = document.querySelector('.ic-personal');
+        console.log(iconPersonal);
+        console.log(personalPage);
+        iconPersonal.src = "../Thuan/assets/images/ic-user.png";
+        personalPage.href = '#';
+    }
 }
