@@ -11,10 +11,10 @@ body {
   border-radius: 8px;
   overflow: hidden;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 80px;
-}
+  }
 
 .login-form {
   width: 390px;
@@ -122,7 +122,7 @@ img{
   width: 500px;
   height: 700px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .container {
       flex-direction: column;
       justify-content: center; 
@@ -142,4 +142,3 @@ img{
     max-width: 390px; 
   }
 }
-
