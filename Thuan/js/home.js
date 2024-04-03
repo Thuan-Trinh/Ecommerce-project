@@ -38,3 +38,12 @@ if (usersData) {
   iconPersonal.src = "./Thuan/assets/images/ic-user.png";
   personalPage.href = '#';
 }
+
+//mobile button sign up
+const mobileSignUpBtn = document.querySelector('#side-menu button');
+console.log(mobileSignUpBtn);
+if(mobileSignUpBtn){
+  mobileSignUpBtn.onclick = () => {
+    window.location.href = './Tuan/login.html';
+  }
+}
