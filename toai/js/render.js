@@ -2,7 +2,7 @@
 
 function loadTableDesktop() {
     const listRowCart = Shop.Array_CartItems.map((product) => {
-        const { id, name, image, additional,  title, price } = product;
+        const { id, name, image, additional,  title, price, quantity } = product;
         
         if (id !== null)
         return `
@@ -29,7 +29,7 @@ function loadTableDesktop() {
                             <svg class="quantityButton-minus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M3.23047 8H12.5638" stroke="black" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <p class="quantityData">1</p>
+                            <p class="quantityData">${quantity}</p>
                             <svg class="quantityButton-plus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.37549 3.33398C8.37549 3.12688 8.20759 2.95898 8.00049 2.95898C7.79338 2.95898 7.62549 3.12688 7.62549 3.33398V7.62549H3.33398C3.12688 7.62549 2.95898 7.79338 2.95898 8.00049C2.95898 8.20759 3.12688 8.37549 3.33398 8.37549H7.62549V12.6673C7.62549 12.8744 7.79338 13.0423 8.00049 13.0423C8.20759 13.0423 8.37549 12.8744 8.37549 12.6673V8.37549H12.6673C12.8744 8.37549 13.0423 8.20759 13.0423 8.00049C13.0423 7.79338 12.8744 7.62549 12.6673 7.62549H8.37549V3.33398Z" fill="black"/>
                             </svg>
@@ -38,12 +38,12 @@ function loadTableDesktop() {
                 </td>
                 <td>
                     <div class="priceDisplay">
-                        $${price}.00    
+                        $${price}
                     </div>
                 </td>
                 <td>
                     <div class="subTotal">
-                        $${price*1}.00
+                        $${price*1}
                     </div>
                 </td>
             </tr>
@@ -56,7 +56,7 @@ function loadTableDesktop() {
 
 function loadTableMobile() {
     const listRowCart = Shop.Array_CartItems.map((product) => {
-        const { id, name, image, additional,  title, price } = product;
+        const { id, name, image, additional,  title, price, quantity } = product;
         
         if (id !== null)
         return `
@@ -73,7 +73,7 @@ function loadTableMobile() {
                                     <svg class="quantityButton-minus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M3.23047 8H12.5638" stroke="black" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                    <p class="quantityData">1</p>
+                                    <p class="quantityData">${quantity}</p>
                                     <svg class="quantityButton-plus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.37549 3.33398C8.37549 3.12688 8.20759 2.95898 8.00049 2.95898C7.79338 2.95898 7.62549 3.12688 7.62549 3.33398V7.62549H3.33398C3.12688 7.62549 2.95898 7.79338 2.95898 8.00049C2.95898 8.20759 3.12688 8.37549 3.33398 8.37549H7.62549V12.6673C7.62549 12.8744 7.79338 13.0423 8.00049 13.0423C8.20759 13.0423 8.37549 12.8744 8.37549 12.6673V8.37549H12.6673C12.8744 8.37549 13.0423 8.20759 13.0423 8.00049C13.0423 7.79338 12.8744 7.62549 12.6673 7.62549H8.37549V3.33398Z" fill="black"/>
                                     </svg>
@@ -85,10 +85,10 @@ function loadTableMobile() {
             <td>
                 <div class="mobile-table-price">
                     <div class="subTotal">
-                        $${price*1}.00
+                        $${price*1}
                     </div>
                     <div class="priceDisplay">
-                        $${price}.00    
+                        $${price}    
                     </div>
                     <div class="remove" id="remove-${id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

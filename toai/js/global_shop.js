@@ -12,37 +12,36 @@ var Shop = {
             quantity: 0,
             subtotal: 0,
         }, //id: null, đây là object mẫu, ko dc render ra
-
-        {
-            id:"PRD-1",
-            name:"1.3 Chair",
-            image:"./images/products/Image Placeholder.png",
-            additional:"Color: Brown",
-            title: "Design by 1AiDo, VN, 2010",
-            price: 20,
-            quantity: 1,
-            subtotal: 20,
-        },
-        {
-            id:"PRD-2",
-            name:"1.3 Chair",
-            image:"./images/products/Image Placeholder(1).png",
-            additional:"Color: Brown",
-            title: "Design by 1NgNaoDo, TheGioi, 2010",
-            price: 19,
-            quantity: 1,
-            subtotal: 19,
-        },
-        {
-            id:"PRD-3",
-            name:"1.3 Chair",
-            image:"./images/products/Image Placeholder(2).png",
-            additional:"Color: Brown",
-            title: "Design by Merit Frank, München Deutschland, 2010",
-            price: 30,
-            quantity: 1,
-            subtotal: 30,
-        }
+        // {
+        //     id:"PRD-1",
+        //     name:"1.3 Chair",
+        //     image:"./images/products/Image Placeholder.png",
+        //     additional:"Color: Brown",
+        //     title: "Design by 1AiDo, VN, 2010",
+        //     price: 20,
+        //     quantity: 1,
+        //     subtotal: 20,
+        // },
+        // {
+        //     id:"PRD-2",
+        //     name:"1.3 Chair",
+        //     image:"./images/products/Image Placeholder(1).png",
+        //     additional:"Color: Brown",
+        //     title: "Design by 1NgNaoDo, TheGioi, 2010",
+        //     price: 19,
+        //     quantity: 1,
+        //     subtotal: 19,
+        // },
+        // {
+        //     id:"PRD-3",
+        //     name:"1.3 Chair",
+        //     image:"./images/products/Image Placeholder(2).png",
+        //     additional:"Color: Brown",
+        //     title: "Design by Merit Frank, München Deutschland, 2010",
+        //     price: 30,
+        //     quantity: 1,
+        //     subtotal: 30,
+        // }
     ],
     Float_InCart: 0.0,
     Float_SubTotal: 0.0,
@@ -69,6 +68,9 @@ function updateDataShop() {
         return subtotal + element.price*element.quantity;
     }, 0)
     Shop.Float_Total = Shop.Float_SubTotal + Shop.Float_Shipping;
+
+    localStorage.removeItem('Shop')
+    localStorage.setItem('Shop', JSON.stringify(Shop));
 }
 
 const findObjectById = function(array, id) {
