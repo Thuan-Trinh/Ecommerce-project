@@ -269,5 +269,103 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
+function buttonAddItemEvent() {
+  buttonAddItemList = document.querySelectorAll('.add-item');
+
+  for (let element of buttonAddItemList) { //Check mỗi button add-item có trên page
+
+    element.addEventListener('click', function() {
+      //Đoạn code này trả về data-id ứng với button đó
+      let addToCartFrame = this.parentElement;
+      let countFrame = addToCartFrame.querySelector('.count');
+      let inputCount = countFrame.querySelector('.item-count');
+
+      let dataID = inputCount.getAttribute('data-id');
+      let quantityToAdd = inputCount.value;
+      console.log(dataID + ' ' + quantityToAdd);
+
+      //Đoạn code này tìm trong local ứng với data-id;
+      let objectToBeAdded = transformObject(findObjectInLocalStorageByID(dataID), parseInt(quantityToAdd));
+      if (objectToBeAdded !== null)
+        console.log(objectToBeAdded);
+
+      //Đoạn này nối với local storage
+      AppendObjectToShopInLocalStorage(objectToBeAdded);
+    })
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  buttonAddItemEvent();
+})
 
 
+
+
+
+
+
+
+
+////Những dòng code để tinh gọn:
+function findObjectInLocalStorageByID(id) { //Trả về object từ localstorage
+  
+  let objectToBeReturned;
+
+  for (let element of productsInfoKeys) {
+    const dataFromLocalStorage = JSON.parse(localStorage.getItem(element));
+    objectToBeReturned = dataFromLocalStorage.find(obj => obj.id === id);
+
+    if (objectToBeReturned) {
+      return objectToBeReturned;
+    }
+  }
+  return null;
+}
+
+
+function transformObject(obj, InPutQuantity) { //Biến đổi object để add vào Shop.Array_InCart()
+/**
+ *         
+* {
+      id: null,
+      name:"",
+      image:"",
+      additional:"",
+      title: "",
+      price: 0,
+      quantity: 0,
+      subtotal: 0,
+  }, //id: null, đây là object mẫu, ko dc render ra
+*/
+
+  let id = obj.id;
+  let name = obj.name;
+  let image = obj.image;
+  let price = parseFloat(obj.price.replace('$', ''));
+  let quantity = InPutQuantity;
+  let title = "";
+  let additional = ""
+  let subtotal = price*InPutQuantity;
+
+
+  let objToBeReturned = { id, name, image, additional, title, price, quantity, subtotal };
+
+  return objToBeReturned;
+}
+
+function AppendObjectToShopInLocalStorage(object) {
+  Shop = JSON.parse(localStorage.getItem("Shop"));
+
+  const existingItem = Shop.Array_CartItems.find(item => item.id === object.id);
+  if (existingItem) {
+      existingItem.quantity++; // Increment quantity if item exists
+  } else {
+      Shop.Array_CartItems.push(object); // Add new item if it doesn't exist
+  }
+
+  updateDataShop();
+  updateGreenCartItemNumber();
+  updateLocalStorageQuantity();
+  localStorage.setItem('Shop', JSON.stringify(Shop));
+}
