@@ -12,36 +12,6 @@ var Shop = {
             quantity: 0,
             subtotal: 0,
         }, //id: null, đây là object mẫu, ko dc render ra
-        // {
-        //     id:"PRD-1",
-        //     name:"1.3 Chair",
-        //     image:"./images/products/Image Placeholder.png",
-        //     additional:"Color: Brown",
-        //     title: "Design by 1AiDo, VN, 2010",
-        //     price: 20,
-        //     quantity: 1,
-        //     subtotal: 20,
-        // },
-        // {
-        //     id:"PRD-2",
-        //     name:"1.3 Chair",
-        //     image:"./images/products/Image Placeholder(1).png",
-        //     additional:"Color: Brown",
-        //     title: "Design by 1NgNaoDo, TheGioi, 2010",
-        //     price: 19,
-        //     quantity: 1,
-        //     subtotal: 19,
-        // },
-        // {
-        //     id:"PRD-3",
-        //     name:"1.3 Chair",
-        //     image:"./images/products/Image Placeholder(2).png",
-        //     additional:"Color: Brown",
-        //     title: "Design by Merit Frank, München Deutschland, 2010",
-        //     price: 30,
-        //     quantity: 1,
-        //     subtotal: 30,
-        // }
     ],
     Float_InCart: 0.0,
     Float_SubTotal: 0.0,
@@ -81,7 +51,7 @@ function adjustItemQuantityByID(id, newQuantity) {
     const item = findObjectById(Shop.Array_CartItems, id);
 
     item.quantity = newQuantity;
-    item.subtotal = parseFloat((item.price * item.quantity).toFixed(2));
+    item.subtotal = item.price * newQuantity;
 
     updateDataShop();
 }
@@ -91,7 +61,7 @@ function minusQuantity(id) {
 
     if (item.quantity >= 2)
         item.quantity -= 1;
-    item.subtotal = parseFloat((item.price * item.quantity).toFixed(2));
+    item.subtotal = item.price * item.quantity;
 
     if (item.quantity <= 1)
         alert('Số lượng vật phẩm ít nhất phải bằng 1!');
