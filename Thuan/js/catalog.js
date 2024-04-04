@@ -66,10 +66,17 @@ decreasingNumber = (productId) => {
   }
 };
 
- updateLocalStorageQuantity = (productId, newQuantity) => {
-  // Lưu giá trị mới của số lượng vào localStorage
+updateLocalStorageQuantity = (productId, newQuantity) => {
+  // Lưu số lượng của sản phẩm vào localStorage với khóa là ID của sản phẩm
   localStorage.setItem(`quantity_${productId}`, newQuantity);
-}
+};
+
+// Hàm này được gọi khi cần lấy số lượng của một sản phẩm từ localStorage
+getLocalStorageQuantity = (productId) => {
+  // Lấy số lượng của sản phẩm từ localStorage
+  return localStorage.getItem(`quantity_${productId}`) || 0;
+};
+
 
 
 //Khai báo mảng các card thông tin
