@@ -30,6 +30,6 @@ function LocalStorageHandle() {
     if (localStorage.getItem('Shop') == null) {
         localStorage.setItem('Shop', JSON.stringify(Shop));
     } else {
-        Shop = JSON.parse(localStorage.getItem("Shop"));
+     Shop = JSON.parse(localStorage.getItem("Shop"));
     }
 }
