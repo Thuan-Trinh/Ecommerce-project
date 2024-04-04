@@ -145,7 +145,7 @@
                 <!-- top grid -->
                 <div id="grid-item-cards">
                     <div class="card-items" style="display: none;">
-                        <div class="card">
+                        <div class="card" data-id="productCard">
                             <div class="tags">
                                 <div class="new-tag">
                                     NEW
@@ -174,11 +174,10 @@
                                 </div>
                                 <div class="add-to-cart">
                                     <div class="count">
-                                        <input class="sub is-form" type="button" value="-"
-                                        onclick="decreasingNumber(this)">
-                                        <input class="item-count" max="99" min="1" name="" type="text" value="0">
-                                        <input class="plus is-form" type="button" value="+"
-                                            onclick="increasingNumber(this)">
+                                        <input class="sub is-form" type="button" value="-">
+                                        <input class="item-count" max="99" min="1" id="this" name="" type="text"
+                                            value="0">
+                                        <input class="plus is-form" type="button" value="+">
                                         <!-- <div class="sub">-</div>
                                         <div class="item-count">0</div>
                                         <div class="plus">+</div> -->

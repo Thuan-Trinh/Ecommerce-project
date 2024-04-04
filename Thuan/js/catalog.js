@@ -7,13 +7,33 @@ const displayProducts = (productsInfor) => {
     if (cardTemplate) {
       gridCardsContainer.innerHTML = "";
 
-      cataCards.forEach(({ image, name, price, arrival }) => {
+      cataCards.forEach(({ id, image, name, price, arrival }) => {
         const cardClone = cardTemplate.cloneNode(true);
         cardClone.querySelector(".card-img").src = image;
         cardClone.querySelector(".card-name").textContent = name;
         cardClone.querySelector(".card-price").textContent = price;
         cardClone.querySelector(".tags").style.visibility =
           arrival === "New" ? "visible" : "hidden";
+
+        //thay đổi id của thẻ theo từng sản phẩm
+        cardClone.setAttribute("data-id", id);
+        cardClone.querySelector(".add-to-cart .count .item-count").setAttribute("id", id);
+
+        // Lấy giá trị số lượng từ localStorage và cập nhật trạng thái hiển thị
+        const storedQuantity = localStorage.getItem(`quantity_${id}`);
+        if (storedQuantity !== null) {
+          cardClone.querySelector(".add-to-cart .count .item-count").value = storedQuantity;
+        }
+
+        // Tìm nút giảm và tăng số lượng trong thẻ sản phẩm và cập nhật thuộc tính onclick
+        const decreaseButton = cardClone.querySelector(".add-to-cart .count .sub"); 
+        const increaseButton = cardClone.querySelector(".add-to-cart .count .plus");
+        decreaseButton.onclick = function () {
+          decreasingNumber(id);
+        };
+        increaseButton.onclick = function () {
+          increasingNumber(id);
+        };
         gridCardsContainer.appendChild(cardClone);
       });
 
@@ -21,6 +41,36 @@ const displayProducts = (productsInfor) => {
     }
   }
 };
+
+increasingNumber = (productId) => {
+  let quantity = document.getElementById(productId);
+  if (quantity) {
+    if (parseInt(quantity.value) < quantity.max) {
+      quantity.value = parseInt(quantity.value) + 1;
+      updateLocalStorageQuantity(productId, quantity.value);
+    } else {
+      quantity.value = quantity.max;
+    }
+  }
+};
+
+decreasingNumber = (productId) => {
+  let quantity = document.getElementById(productId);
+  if (quantity) {
+    if (quantity.value > quantity.min) {
+      quantity.value = parseInt(quantity.value) - 1;
+      updateLocalStorageQuantity(productId, quantity.value);
+    } else {
+      quantity.value = quantity.min;
+    }
+  }
+};
+
+ updateLocalStorageQuantity = (productId, newQuantity) => {
+  // Lưu giá trị mới của số lượng vào localStorage
+  localStorage.setItem(`quantity_${productId}`, newQuantity);
+}
+
 
 //Khai báo mảng các card thông tin
 const productsInfoKeys = [
@@ -215,22 +265,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
  */
-//check id sản phẩm để chỉ tăng giảm 
-increasingNumber = (e) => {
-  let quantity = e.parentNode.querySelector(".item-count");
-  if (parseInt(quantity.value) < quantity.max) {
-    quantity.value = parseInt(quantity.value) + 1;
-  } else {
-    quantity.value = quantity.max;
-  }
-};
 
-decreasingNumber = (e) => {
-  let quantity = e.parentNode.querySelector(".item-count");
-  if (quantity.value > quantity.min) {
-    quantity.value = parseInt(quantity.value) - 1;
-  } else {
-    quantity.value = quantity.min;
-  }
-};
 
