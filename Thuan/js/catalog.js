@@ -134,6 +134,7 @@ const getLocalStorageQuantity = (productId) => {
 };
 
 
+
 //Khai báo mảng các card thông tin
 const productsInfoKeys = [
   "novelCardInfor",
@@ -179,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
 clickHandlers[0]();
 
 // function filter mobile thay đổi sản phẩm
-
 document.addEventListener("DOMContentLoaded", () => {
   const filterBtn = document.querySelector(
     ".grid-content .arrange-btns .left-side-arrange .ic-filter"
@@ -243,6 +243,62 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   clickTabs[0]();
 });
+/*
+//ấn button add cart
+{
+  document.addEventListener("DOMContentLoaded", () => {
+    const addToCartButtons = document.querySelectorAll(".add-item");
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", (event) => {
+            const productCard = event.target.closest('.card');
+            const cardName = productCard.querySelector('.card-name').innerText;
+            const cardPrice = parseFloat(productCard.querySelector('.card-price').innerText.replace('$', ''));
+            const cardImage = productCard.querySelector('.card-img').src;
+            const cardId = productCard.dataset.id;
+            const cardCount = parseInt(productCard.querySelector('.item-count').value);
+            const subtotal = cardPrice * cardCount;
+
+            const item = {
+                id: cardId,
+                name: cardName,
+                price: cardPrice,
+                image: cardImage,
+                quantity: cardCount,
+                color: '', // Màu sắc (nếu có)
+                total: subtotal // Tổng tiền
+            };
+
+            // Lấy thông tin màu sắc nếu có
+            const colorTag = productCard.querySelector('.color-tag');
+            if (colorTag) {
+                item.color = colorTag.innerText;
+            }
+
+            // Lấy object shop từ local storage
+            let shop = JSON.parse(localStorage.getItem('shop')) || {};
+
+            // Tạo mảng array-items nếu chưa tồn tại
+            shop['array-items'] = shop['array-items'] || [];
+
+            // Thêm sản phẩm vào mảng array-items
+            shop['array-items'].push(item);
+
+            // Lưu object shop vào local storage
+            localStorage.setItem('shop', JSON.stringify(shop));
+
+            // Log object shop ra màn hình
+            console.log(shop);
+
+            // Thông báo cho người dùng biết sản phẩm đã được thêm vào giỏ hàng
+            alert(`${cardCount} ${cardName}(s) added to cart.`);
+        });
+    });
+});
+
+}
+ */
+
 
 //check có thông tin log in hay không để hiện hình ảnh user
 {
@@ -268,66 +324,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 }
-//ấn button add cart
-{
-  document.addEventListener("DOMContentLoaded", () => {
-    const addToCartButtons = document.querySelectorAll(".add-item");
-  
-    addToCartButtons.forEach(button => {
-        button.addEventListener("click", (event) => {
-            const productCard = event.target.closest('.card');
-            const cardName = productCard.querySelector('.card-name').innerText;
-            const cardPrice = parseFloat(productCard.querySelector('.card-price').innerText.replace('$', ''));
-            const cardImage = productCard.querySelector('.card-img').src;
-            const cardId = productCard.dataset.id;
-            const cardCount = parseInt(productCard.querySelector('.item-count').value);
-            const subtotal = cardPrice * cardCount;
-  
-            const item = {
-                id: cardId,
-                name: cardName,
-                price: cardPrice,
-                image: cardImage,
-                quantity: cardCount,
-                color: '', // Màu sắc (nếu có)
-                total: subtotal // Tổng tiền
-            };
-  
-            // Lấy thông tin màu sắc nếu có
-            const colorTag = productCard.querySelector('.color-tag');
-            if (colorTag) {
-                item.color = colorTag.innerText;
-            }
-  
-            // Lấy object shop từ local storage
-            let shop = JSON.parse(localStorage.getItem('shop')) || {};
-  
-            // Tạo mảng array-items nếu chưa tồn tại
-            shop['array-items'] = shop['array-items'] || [];
-  
-            // Thêm sản phẩm vào mảng array-items
-            shop['array-items'].push(item);
-  
-            // Lưu object shop vào local storage
-            localStorage.setItem('shop', JSON.stringify(shop));
-  
-            // Log object shop ra màn hình
-            console.log(shop);
-  
-            // Thông báo cho người dùng biết sản phẩm đã được thêm vào giỏ hàng
-            if(cardCount > 0){
-              alert(`${cardCount} ${cardName}(s) added to cart.`);
-            }else{
-              alert(`invalid number`);
-            }
-        });
-    });
-  });
-}
 
 
-/*
 
+//funtion add to cart
 function buttonAddItemEvent() {
   buttonAddItemList = document.querySelectorAll('.add-item');
 
@@ -419,4 +419,3 @@ function AppendObjectToShopInLocalStorage(object) {
   updateLocalStorageQuantity();
   localStorage.setItem('Shop', JSON.stringify(Shop));
 }
- */
