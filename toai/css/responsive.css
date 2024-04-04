@@ -46,6 +46,10 @@
     a.phone-nav {
         display: inline;
     }
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
 
     .addressShipping {
         display: none;
@@ -81,7 +85,10 @@
     .breadcrumbs {
         display: none;
     }
-
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
     .content .title h1 {
         font-size: 40px;
     }
@@ -104,6 +111,10 @@
 
 
 @media screen and (max-width: 580px){
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
     .mobile-table {
         width: 500px;
     }
@@ -152,6 +163,10 @@
 }
 
 @media screen and (max-width: 520px) {
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
     .cartSummary {
         max-width: 500px;
         width: 300px;
@@ -177,6 +192,10 @@
 
 
 @media screen and (max-width: 400px) {
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
     .content .title h1 {
         font-size: 30px;
     }
@@ -210,6 +229,10 @@
 }
 
 @media screen and (max-width: 336px) {
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
     .content .title h1 {
         font-size: 30px;
     }
@@ -249,6 +272,10 @@
 }
 
 @media screen and (max-width: 280px) {
+    a.phone-nav img{
+        width: 36px;
+        height: 36px;
+    }
 
     .content .title h1 {
         font-size: 18px;
