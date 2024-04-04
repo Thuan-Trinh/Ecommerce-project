@@ -74,7 +74,8 @@
                 </nav>
                 <div class="icons">
                     <img src="./assets/images/ic-search.svg" alt="ic-search" class="ic-search">
-                    <a href="../Tuan/login.html"><img src="./assets/images/ic-personal.svg" alt="ic-personal" class="ic-personal"></a>
+                    <a href="../Tuan/login.html"><img src="./assets/images/ic-personal.svg" alt="ic-personal"
+                            class="ic-personal"></a>
                     <div class="cartItemsIcon">
                         <a href="../toai/index.html">
                             <img src="./assets/images/ic-cart.svg" alt="ic-cart">
@@ -173,9 +174,14 @@
                                 </div>
                                 <div class="add-to-cart">
                                     <div class="count">
-                                        <div class="sub">-</div>
+                                        <input class="sub is-form" type="button" value="-"
+                                        onclick="decreasingNumber(this)">
+                                        <input class="item-count" max="99" min="1" name="" type="text" value="0">
+                                        <input class="plus is-form" type="button" value="+"
+                                            onclick="increasingNumber(this)">
+                                        <!-- <div class="sub">-</div>
                                         <div class="item-count">0</div>
-                                        <div class="plus">+</div>
+                                        <div class="plus">+</div> -->
                                     </div>
                                     <button class="add-item">
                                         Add to Cart
@@ -205,7 +211,7 @@
                                 <img src="./assets/images/item-img-1.webp" alt="item-img" class="card-img">
                             </div>
 
-                            <div class="card-detail">                              
+                            <div class="card-detail">
                                 <h6>1.3 Chair</h6>
                                 <span>Design by Merit Frank, Nana Gröner, 2010</span>
                             </div>
@@ -221,7 +227,7 @@
 
                             <div class="card-detail">
                                 <h6>1.3 Chair</h6>
-                                <span >Design by Merit Frank, Nana Gröner, 2010</span>
+                                <span>Design by Merit Frank, Nana Gröner, 2010</span>
                             </div>
                         </div>
                     </div>
@@ -318,7 +324,7 @@
     <script src="../toai/js/event.js"></script>
     <script src="../toai/js/global_shop.js"></script>
     <script src="../toai/js/render.js"></script>
-    
+
     <script src="./js/initialization.js"></script>
     <script src="./js/catalog.js"></script>
     <script src="./js/main.js"></script>

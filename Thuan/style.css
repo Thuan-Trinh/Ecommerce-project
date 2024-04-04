@@ -130,7 +130,6 @@ body {
 
   gap: 1.5rem;
   margin-bottom: 1.5rem;
-
 }
 
 /* SUB HEAD */
@@ -298,8 +297,6 @@ nav ul li a:hover::after {
   display: flex;
   align-items: center;
 }
-
-
 
 .cartItemsIcon {
   position: relative;
@@ -557,7 +554,6 @@ nav ul li a:hover::after {
   overflow: hidden;
   border-radius: var(--border-img);
   transition: transform 0.5s;
-
 }
 
 .block-right img {
@@ -933,7 +929,7 @@ footer {
 }
 
 .side-bar span:hover {
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 
 .side-bar-active {
@@ -1011,7 +1007,6 @@ footer {
 
   margin-bottom: 0.5rem;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-
 }
 
 .card-item-img img {
@@ -1103,22 +1098,24 @@ footer {
   align-items: center;
   gap: 1rem;
 }
-.card-bottom .add-to-cart .count div{
+.card-bottom .add-to-cart .count input {
   cursor: pointer;
-}
-.card-bottom .add-to-cart .count .item-count{
-  width: 1.25rem;
+  border: none;
   text-align: center;
+  font-size: 1rem;
+  line-height: 1rem;
+  outline: none;
+}
+.card-bottom .add-to-cart .count .item-count {
+  width: 1.5rem;
 }
 
 .card-bottom .add-to-cart .count .sub {
   background-color: var(--neutral-03);
-  padding: 0.5rem 0.68rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
 
   color: var(--color-primary);
-  font-size: 1rem;
-  line-height: 1rem;
 }
 
 .card-bottom .add-to-cart .count .plus {
@@ -1127,8 +1124,6 @@ footer {
   border-radius: 0.25rem;
 
   color: var(--neutral-01);
-  font-size: 1rem;
-  line-height: 1rem;
 }
 
 .card-bottom .add-to-cart button.add-item {
@@ -1142,9 +1137,8 @@ footer {
   border-radius: 0.4rem;
   font-weight: 600;
 }
-.card-bottom .add-to-cart button.add-item:hover{
+.card-bottom .add-to-cart button.add-item:hover {
   background-color: #1a9b61;
-
 }
 
 .card-detail {
@@ -1233,7 +1227,6 @@ footer {
 
 /* RESSPONSIVENESS */
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-
   /* side menu */
   #side-menu.show-side-menu {
     left: 0;
@@ -1354,7 +1347,6 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
     transition: top 0.3s ease;
-
   }
 
   /* body */
@@ -1499,10 +1491,7 @@ footer {
 
   /* DONE CATALOG PAGE */
 
-
-
   /* HOMEPAGE */
-
 
   /* hero sectoin tablet */
   .hero-section {
@@ -1558,9 +1547,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
-
   }
-
 
   .novel-items:first-child {
     grid-row-start: 1;
@@ -1585,7 +1572,6 @@ footer {
   .block-left-img {
     height: 18rem;
   }
-
 
   /* turncouchtable tablet*/
   .turnTableCouch-section {
@@ -1751,7 +1737,6 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 100;
     transition: top 0.3s ease;
-
   }
 
   /* header mobile*/
@@ -1763,7 +1748,6 @@ footer {
   .search-field {
     display: none;
   }
-
 
   .ic-menu {
     display: block;
@@ -1912,7 +1896,7 @@ footer {
     z-index: 99;
   }
 
- .filter-tabs span {
+  .filter-tabs span {
     color: var(--neutral-04);
     font-size: 0.875rem;
     text-align: left;
@@ -1920,7 +1904,7 @@ footer {
     font-weight: 400;
   }
 
-.side-bar-active {
+  .side-bar-active {
     color: var(--color-primary) !important;
   }
 
@@ -2026,12 +2010,12 @@ footer {
     align-items: center;
     gap: 0.5rem;
   }
-  #grid-item-cards .card-bottom .add-to-cart .count div{
+  #grid-item-cards .card-bottom .add-to-cart .count div {
     font-size: 1rem;
     line-height: 1rem;
     padding: 0.3rem 0.5rem;
   }
-  #grid-item-cards .card-bottom .add-to-cart .add-item{
+  #grid-item-cards .card-bottom .add-to-cart .add-item {
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem 0.75rem;
@@ -2204,8 +2188,6 @@ footer {
 
   /* END OF CATALOG PAGE */
 
-
-
   /* HOMEPAGE RESPONSIVE MOBILE */
   .hero-section {
     flex-direction: column-reverse;
@@ -2231,7 +2213,6 @@ footer {
   }
 
   .hero-title h1 {
-
     font-family: "Poppins";
     font-size: 2.4375rem;
     font-style: normal;
@@ -2245,7 +2226,6 @@ footer {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-
   }
 
   .hero-left button {

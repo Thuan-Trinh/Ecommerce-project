@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         filterTabs.style.display = "flex";
       } else {
-        filterTabs.style.display = "none";   
+        filterTabs.style.display = "none";
       }
     };
 
@@ -132,6 +132,32 @@ document.addEventListener("DOMContentLoaded", () => {
   clickTabs[0]();
 });
 
+//check có thông tin log in hay không để hiện hình ảnh user
+{
+  const usersData = JSON.parse(localStorage.getItem("usersData"));
+  console.log(usersData);
+
+  if (usersData) {
+    const personalPage = document.querySelector(".icons a");
+    const iconPersonal = document.querySelector(".ic-personal");
+    console.log(iconPersonal);
+    console.log(personalPage);
+    iconPersonal.src = "./assets/images/ic-user.png";
+    personalPage.href = "#";
+  }
+}
+//mobile button sign up
+{
+  const mobileSignUpBtn = document.querySelector("#side-menu button");
+  console.log(mobileSignUpBtn);
+  if (mobileSignUpBtn) {
+    mobileSignUpBtn.onclick = () => {
+      window.location.href = "../Tuan/login.html";
+    };
+  }
+}
+
+/*
 //function thêm số đếm khi ấn button cộng trừ sản phẩm
 document.addEventListener("DOMContentLoaded", () => {
   const addToCartBtns = document.querySelectorAll(".add-item");
@@ -188,27 +214,23 @@ document.addEventListener("DOMContentLoaded", () => {
     updateQuantityDisplay();
   });
 });
-
-
-{
-//check có thông tin log in hay không để hiện hình ảnh user
-  const usersData = JSON.parse(localStorage.getItem('usersData'));
-  console.log(usersData);
-  
-  if (usersData) {
-    const personalPage = document.querySelector('.icons a');
-    const iconPersonal = document.querySelector('.ic-personal');
-    console.log(iconPersonal);
-    console.log(personalPage);
-    iconPersonal.src = "./assets/images/ic-user.png";
-    personalPage.href = '#';
+ */
+//check id sản phẩm để chỉ tăng giảm 
+increasingNumber = (e) => {
+  let quantity = e.parentNode.querySelector(".item-count");
+  if (parseInt(quantity.value) < quantity.max) {
+    quantity.value = parseInt(quantity.value) + 1;
+  } else {
+    quantity.value = quantity.max;
   }
-}
-//mobile button sign up
-const mobileSignUpBtn = document.querySelector('#side-menu button');
-console.log(mobileSignUpBtn);
-if(mobileSignUpBtn){
-  mobileSignUpBtn.onclick = () => {
-    window.location.href = '../Tuan/login.html';
+};
+
+decreasingNumber = (e) => {
+  let quantity = e.parentNode.querySelector(".item-count");
+  if (quantity.value > quantity.min) {
+    quantity.value = parseInt(quantity.value) - 1;
+  } else {
+    quantity.value = quantity.min;
   }
-}
+};
+
