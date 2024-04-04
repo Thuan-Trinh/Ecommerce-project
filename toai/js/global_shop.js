@@ -4,9 +4,9 @@ var Shop = {
     Array_CartItems: [
         {
             id: null,
-            name:"",
-            image:"",
-            additional:"",
+            name: "",
+            image: "",
+            additional: "",
             title: "",
             price: 0,
             quantity: 0,
@@ -65,7 +65,7 @@ var couponCODES = {
 function updateDataShop() {
     Shop.Float_InCart = Shop.Array_CartItems.length;
     Shop.Float_SubTotal = Shop.Array_CartItems.reduce((subtotal, element) => {
-        return subtotal + element.price*element.quantity;
+        return subtotal + element.price * element.quantity;
     }, 0)
     Shop.Float_Total = Shop.Float_SubTotal + Shop.Float_Shipping;
 
@@ -73,7 +73,7 @@ function updateDataShop() {
     localStorage.setItem('Shop', JSON.stringify(Shop));
 }
 
-const findObjectById = function(array, id) {
+const findObjectById = function (array, id) {
     return array.find(item => item.id === id);
 };
 
@@ -81,7 +81,7 @@ function adjustItemQuantityByID(id, newQuantity) {
     const item = findObjectById(Shop.Array_CartItems, id);
 
     item.quantity = newQuantity;
-    item.subtotal = item.price * item.quantity;
+    item.subtotal = parseFloat((item.price * item.quantity).toFixed(2));
 
     updateDataShop();
 }
@@ -91,8 +91,10 @@ function minusQuantity(id) {
 
     if (item.quantity >= 2)
         item.quantity -= 1;
+    item.subtotal = parseFloat((item.price * item.quantity).toFixed(2));
 
-    item.subtotal = item.price * item.quantity;
+    if (item.quantity <= 1)
+        alert('Số lượng vật phẩm ít nhất phải bằng 1!');
 
     updateDataShop();
 }

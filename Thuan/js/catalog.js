@@ -48,27 +48,32 @@ const displayProducts = (productsInfo) => {
     cardClone.querySelector(".tags").style.visibility = arrival === "New" ? "visible" : "hidden";
 
     // Change the ID attribute of the card for each product
+    const cardCloneAddCartContainer = cardClone.querySelector('.add-to-cart');
+    cardCloneAddCartContainer.setAttribute("data-id", id);
+    const cardCloneCount = cardClone.querySelector('.add-to-cart .count');
+    cardCloneCount.setAttribute("data-id", id);
     cardClone.setAttribute("data-id", id);
     const quantityInput = cardClone.querySelector(".add-to-cart .count .item-count");
     quantityInput.setAttribute("data-id", id);
-    
+    const buttonDataId = cardClone.querySelector('.add-to-cart .add-item');
+    buttonDataId.setAttribute("data-id", id);
+
     // Retrieve and update quantity from localStorage
-  const storedQuantity = getLocalStorageQuantity(id);
-  if (storedQuantity !== null) {
-    quantityInput.value = storedQuantity;
-  } else {
-    // Nếu không có số lượng được lưu trữ trong local storage, lưu số lượng ban đầu
-    const initialQuantity = 0; // Số lượng ban đầu có thể được thiết lập là bất kỳ giá trị nào bạn muốn
-    quantityInput.value = initialQuantity;
-    updateLocalStorageQuantity(id, initialQuantity);
-  }
+    const storedQuantity = getLocalStorageQuantity(id);
+    if (storedQuantity !== null) {
+      quantityInput.value = storedQuantity;
+    } else {
+      // Nếu không có số lượng được lưu trữ trong local storage, lưu số lượng ban đầu
+      const initialQuantity = 0; // Số lượng ban đầu có thể được thiết lập là bất kỳ giá trị nào bạn muốn
+      quantityInput.value = initialQuantity;
+      updateLocalStorageQuantity(id, initialQuantity);
+    }
 
     gridCardsContainer.appendChild(cardClone);
     bindQuantityEvents(cardClone);
   });
 
   cardTemplate.style.display = "none";
-  console.log(cardTemplate) // Hide the original card template
 };
 
 const increasingNumber = (productId) => {
@@ -243,62 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   clickTabs[0]();
 });
-/*
-//ấn button add cart
-{
-  document.addEventListener("DOMContentLoaded", () => {
-    const addToCartButtons = document.querySelectorAll(".add-item");
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener("click", (event) => {
-            const productCard = event.target.closest('.card');
-            const cardName = productCard.querySelector('.card-name').innerText;
-            const cardPrice = parseFloat(productCard.querySelector('.card-price').innerText.replace('$', ''));
-            const cardImage = productCard.querySelector('.card-img').src;
-            const cardId = productCard.dataset.id;
-            const cardCount = parseInt(productCard.querySelector('.item-count').value);
-            const subtotal = cardPrice * cardCount;
-
-            const item = {
-                id: cardId,
-                name: cardName,
-                price: cardPrice,
-                image: cardImage,
-                quantity: cardCount,
-                color: '', // Màu sắc (nếu có)
-                total: subtotal // Tổng tiền
-            };
-
-            // Lấy thông tin màu sắc nếu có
-            const colorTag = productCard.querySelector('.color-tag');
-            if (colorTag) {
-                item.color = colorTag.innerText;
-            }
-
-            // Lấy object shop từ local storage
-            let shop = JSON.parse(localStorage.getItem('shop')) || {};
-
-            // Tạo mảng array-items nếu chưa tồn tại
-            shop['array-items'] = shop['array-items'] || [];
-
-            // Thêm sản phẩm vào mảng array-items
-            shop['array-items'].push(item);
-
-            // Lưu object shop vào local storage
-            localStorage.setItem('shop', JSON.stringify(shop));
-
-            // Log object shop ra màn hình
-            console.log(shop);
-
-            // Thông báo cho người dùng biết sản phẩm đã được thêm vào giỏ hàng
-            alert(`${cardCount} ${cardName}(s) added to cart.`);
-        });
-    });
-});
-
-}
- */
-
 
 //check có thông tin log in hay không để hiện hình ảnh user
 {
@@ -325,43 +274,68 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-
-
 //funtion add to cart
+/*
 function buttonAddItemEvent() {
   buttonAddItemList = document.querySelectorAll('.add-item');
 
   for (let element of buttonAddItemList) { //Check mỗi button add-item có trên page
 
-    element.addEventListener('click', function() {
+    element.addEventListener('click', function () {
       //Đoạn code này trả về data-id ứng với button đó
       let addToCartFrame = this.parentElement;
       let countFrame = addToCartFrame.querySelector('.count');
       let inputCount = countFrame.querySelector('.item-count');
 
       let dataID = inputCount.getAttribute('data-id');
-      let quantityToAdd = inputCount.value;
+      let quantityToAdd = parseInt(inputCount.value);
       console.log(dataID + ' ' + quantityToAdd);
 
-      //Đoạn code này tìm trong local ứng với data-id;
-      let objectToBeAdded = transformObject(findObjectInLocalStorageByID(dataID), parseInt(quantityToAdd));
-      if (objectToBeAdded !== null)
-        console.log(objectToBeAdded);
+      // Kiểm tra nếu lượng thêm vào là lớn hơn 0
+      if (quantityToAdd > 0) {
+        console.log(dataID + ' ' + quantityToAdd);
 
-      //Đoạn này nối với local storage
-      AppendObjectToShopInLocalStorage(objectToBeAdded);
+        // Tìm kiếm đối tượng trong local storage dựa trên data-id
+        let objectToBeAdded = transformObject(findObjectInLocalStorageByID(dataID), quantityToAdd);
+        if (objectToBeAdded !== null) {
+          console.log(objectToBeAdded);
+
+          // Nối đối tượng này với local storage
+          AppendObjectToShopInLocalStorage(objectToBeAdded);
+        };
+      } else {
+        // Hiển thị cảnh báo nếu lượng thêm vào là không hợp lệ (bằng 0)
+        alert("Số lượng thêm vào không hợp lệ!");
+      };
     })
+    updateGreenCartItemNumber();
   }
 }
+*/
+//event delegation: 
+document.addEventListener('click', event => {
+  const addButton = event.target.closest('.add-item');
+  if (!addButton) return;
 
-document.addEventListener("DOMContentLoaded", () => {
-  buttonAddItemEvent();
-})
+  const inputCount = addButton.parentElement.querySelector('.item-count');
+  const dataID = inputCount.getAttribute('data-id');
+  const quantityToAdd = parseInt(inputCount.value);
 
+  if (quantityToAdd > 0) {
+    let objectToBeAdded = transformObject(findObjectInLocalStorageByID(dataID), quantityToAdd);
+    if (objectToBeAdded) {
+      AppendObjectToShopInLocalStorage(objectToBeAdded);
+    }
+  } else {
+    alert("Số lượng thêm vào không hợp lệ!");
+  }
+});
+//update số lượng sản phẩm trong giỏ hàng
+document.addEventListener("DOMContentLoaded", updateGreenCartItemNumber);
 
 ////Những dòng code để tinh gọn:
 function findObjectInLocalStorageByID(id) { //Trả về object từ localstorage
-  
+
   let objectToBeReturned;
 
   for (let element of productsInfoKeys) {
@@ -377,16 +351,16 @@ function findObjectInLocalStorageByID(id) { //Trả về object từ localstorag
 
 
 function transformObject(obj, InPutQuantity) { //Biến đổi object để add vào Shop.Array_InCart()
-// {
-//       id: null,
-//       name:"",
-//       image:"",
-//       additional:"",
-//       title: "",
-//       price: 0,
-//       quantity: 0,
-//       subtotal: 0,
-//   }, //id: null, đây là object mẫu, ko dc render ra
+  // {
+  //       id: null,
+  //       name:"",
+  //       image:"",
+  //       additional:"",
+  //       title: "",
+  //       price: 0,
+  //       quantity: 0,
+  //       subtotal: 0,
+  //   }, //id: null, đây là object mẫu, ko dc render ra
 
 
   let id = obj.id;
@@ -395,8 +369,8 @@ function transformObject(obj, InPutQuantity) { //Biến đổi object để add 
   let price = parseFloat(obj.price.replace('$', ''));
   let quantity = InPutQuantity;
   let title = "";
-  let additional = ""
-  let subtotal = price*InPutQuantity;
+  let additional = "";
+  let subtotal = price * quantity;
 
 
   let objToBeReturned = { id, name, image, additional, title, price, quantity, subtotal };
@@ -409,9 +383,11 @@ function AppendObjectToShopInLocalStorage(object) {
 
   const existingItem = Shop.Array_CartItems.find(item => item.id === object.id);
   if (existingItem) {
-      existingItem.quantity++; // Increment quantity if item exists
+    existingItem.quantity += object.quantity; // Increment quantity if item exists
+    alert(`Đã thêm ${object.quantity} mặt hàng ${object.name} thành công!`);
   } else {
-      Shop.Array_CartItems.push(object); // Add new item if it doesn't exist
+    Shop.Array_CartItems.push(object); // Add new item if it doesn't exist
+    alert(`${object.quantity} mặt hàng ${object.name} đã được thêm vào giỏ hàng thành công!`);
   }
 
   updateDataShop();

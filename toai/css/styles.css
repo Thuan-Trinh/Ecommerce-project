@@ -611,7 +611,7 @@ p.id {
     /* Custom radio button design for default state */
     content: '';
     position: absolute;
-    top: 0;
+    /* top: 0; */
     left: 0;
     width: 16px;
     /* Width for the default circle */
