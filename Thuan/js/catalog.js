@@ -1,82 +1,131 @@
-const displayProducts = (productsInfor) => {
+const bindQuantityEvents = (productCard) => {
+  const decreaseButton = productCard.querySelector(".add-to-cart .count .sub");
+  const increaseButton = productCard.querySelector(".add-to-cart .count .plus");
+  const quantityInput = productCard.querySelector(".add-to-cart .count .item-count");
+
+  const productId = quantityInput.getAttribute("data-id");
+
+  decreaseButton.onclick = () => decreasingNumber(productId);
+  increaseButton.onclick = () => increasingNumber(productId);
+};
+
+const displayProducts = (productsInfo) => {
   const gridCardsContainer = document.getElementById("grid-item-cards");
-  const cataCards = JSON.parse(localStorage.getItem(productsInfor));
 
-  if (gridCardsContainer && cataCards) {
-    const cardTemplate = document.querySelector(".card");
-    if (cardTemplate) {
-      gridCardsContainer.innerHTML = "";
+  // Error handling: Check if container and product information are available
+  if (!gridCardsContainer) {
+    console.error("Grid cards container not found.");
+    return;
+  }
 
-      cataCards.forEach(({ id, image, name, price, arrival }) => {
-        const cardClone = cardTemplate.cloneNode(true);
-        cardClone.querySelector(".card-img").src = image;
-        cardClone.querySelector(".card-name").textContent = name;
-        cardClone.querySelector(".card-price").textContent = price;
-        cardClone.querySelector(".tags").style.visibility =
-          arrival === "New" ? "visible" : "hidden";
+  let cataCards;
+  try {
+    cataCards = JSON.parse(localStorage.getItem(productsInfo));
+  } catch (error) {
+    console.error("Error parsing product information from local storage:", error);
+    return;
+  }
 
-        //thay đổi id của thẻ theo từng sản phẩm
-        cardClone.setAttribute("data-id", id);
-        cardClone.querySelector(".add-to-cart .count .item-count").setAttribute("id", id);
+  if (!cataCards || !Array.isArray(cataCards)) {
+    console.error("Invalid or missing product information in local storage.");
+    return;
+  }
 
-        // Lấy giá trị số lượng từ localStorage và cập nhật trạng thái hiển thị
-        const storedQuantity = localStorage.getItem(`quantity_${id}`);
-        if (storedQuantity !== null) {
-          cardClone.querySelector(".add-to-cart .count .item-count").value = storedQuantity;
-        }
+  const cardTemplate = document.querySelector(".card");
 
-        // Tìm nút giảm và tăng số lượng trong thẻ sản phẩm và cập nhật thuộc tính onclick
-        const decreaseButton = cardClone.querySelector(".add-to-cart .count .sub"); 
-        const increaseButton = cardClone.querySelector(".add-to-cart .count .plus");
-        decreaseButton.onclick = function () {
-          decreasingNumber(id);
-        };
-        increaseButton.onclick = function () {
-          increasingNumber(id);
-        };
-        gridCardsContainer.appendChild(cardClone);
-      });
+  if (!cardTemplate) {
+    console.error("Card template not found.");
+    return;
+  }
 
-      cardTemplate.style.display = "none";
+  gridCardsContainer.innerHTML = "";
+
+  cataCards.forEach(({ id, image, name, price, arrival }) => {
+    const cardClone = cardTemplate.cloneNode(true);
+    cardClone.querySelector(".card-img").src = image;
+    cardClone.querySelector(".card-name").textContent = name;
+    cardClone.querySelector(".card-price").textContent = price;
+    cardClone.querySelector(".tags").style.visibility = arrival === "New" ? "visible" : "hidden";
+
+    // Change the ID attribute of the card for each product
+    cardClone.setAttribute("data-id", id);
+    cardClone.querySelector(".add-to-cart .count .item-count").setAttribute("data-id", id);
+
+    // Retrieve and update quantity from localStorage
+    const storedQuantity = getLocalStorageQuantity(id);
+    if (storedQuantity !== null) {
+      cardClone.querySelector(".add-to-cart .count .item-count").value = storedQuantity;
     }
+
+    gridCardsContainer.appendChild(cardClone);
+    bindQuantityEvents(cardClone);
+  });
+
+  cardTemplate.style.display = "none";
+  console.log(cardTemplate) // Hide the original card template
+};
+
+const increasingNumber = (productId) => {
+  const quantity = document.querySelector(`.add-to-cart .count .item-count[data-id="${productId}"]`);
+
+  if (!quantity) {
+    console.error("Không tìm thấy phần tử input số lượng.");
+    return;
+  }
+
+  const currentQuantity = +quantity.value; // Chuyển đổi sang số
+  const maxQuantity = +quantity.max;
+
+  if (isNaN(currentQuantity) || isNaN(maxQuantity)) {
+    console.error("Giá trị số lượng hoặc giá trị số lượng tối đa không hợp lệ.");
+    return;
+  }
+
+  if (currentQuantity < maxQuantity) {
+    quantity.value = currentQuantity + 1;
+    updateLocalStorageQuantity(productId, quantity.value);
+  } else {
+    quantity.value = maxQuantity;
   }
 };
 
-increasingNumber = (productId) => {
-  let quantity = document.getElementById(productId);
-  if (quantity) {
-    if (parseInt(quantity.value) < quantity.max) {
-      quantity.value = parseInt(quantity.value) + 1;
-      updateLocalStorageQuantity(productId, quantity.value);
-    } else {
-      quantity.value = quantity.max;
-    }
+const decreasingNumber = (productId) => {
+  const quantity = document.querySelector(`.add-to-cart .count .item-count[data-id="${productId}"]`);
+
+  if (!quantity) {
+    console.error("Không tìm thấy phần tử input số lượng.");
+    return;
+  }
+
+  const currentQuantity = +quantity.value; // Chuyển đổi sang số
+  const minQuantity = +quantity.min;
+
+  if (isNaN(currentQuantity) || isNaN(minQuantity)) {
+    console.error("Giá trị số lượng hoặc giá trị số lượng tối thiểu không hợp lệ.");
+    return;
+  }
+
+  if (currentQuantity > minQuantity) {
+    quantity.value = currentQuantity - 1;
+    updateLocalStorageQuantity(productId, quantity.value);
+  } else {
+    quantity.value = minQuantity;
   }
 };
 
-decreasingNumber = (productId) => {
-  let quantity = document.getElementById(productId);
-  if (quantity) {
-    if (quantity.value > quantity.min) {
-      quantity.value = parseInt(quantity.value) - 1;
-      updateLocalStorageQuantity(productId, quantity.value);
-    } else {
-      quantity.value = quantity.min;
-    }
+const updateLocalStorageQuantity = (productId, newQuantity) => {
+  if (isNaN(newQuantity)) {
+    console.error("Giá trị số lượng không hợp lệ.");
+    return;
   }
-};
 
-updateLocalStorageQuantity = (productId, newQuantity) => {
-  // Lưu số lượng của sản phẩm vào localStorage với khóa là ID của sản phẩm
   localStorage.setItem(`quantity_${productId}`, newQuantity);
 };
 
-// Hàm này được gọi khi cần lấy số lượng của một sản phẩm từ localStorage
-getLocalStorageQuantity = (productId) => {
-  // Lấy số lượng của sản phẩm từ localStorage
-  return localStorage.getItem(`quantity_${productId}`) || 0;
+const getLocalStorageQuantity = (productId) => {
+  const storedQuantity = localStorage.getItem(`quantity_${productId}`);
+  return storedQuantity !== null ? +storedQuantity : null;
 };
-
 
 
 //Khai báo mảng các card thông tin
@@ -214,63 +263,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-/*
-//function thêm số đếm khi ấn button cộng trừ sản phẩm
-document.addEventListener("DOMContentLoaded", () => {
-  const addToCartBtns = document.querySelectorAll(".add-item");
-  const subBtns = document.querySelectorAll(".sub");
-  const plusBtns = document.querySelectorAll(".plus");
-  const itemCounts = document.querySelectorAll(".item-count");
-  const cartCount = document.querySelector(".cartItemsNumbers");
-
-  let totalQuantity = 0;
-
-  const updateTotalQuantity = () => {
-    let sum = 0;
-    itemCounts.forEach((itemCount) => {
-      sum += parseInt(itemCount.textContent);
-    });
-    totalQuantity = sum;
-    cartCount.textContent = totalQuantity;
-  };
-
-  addToCartBtns.forEach((addToCartBtn, index) => {
-    let quantity = 0;
-
-    const updateQuantityDisplay = () => {
-      itemCounts[index].textContent = quantity;
-      updateTotalQuantity();
-    };
-
-    plusBtns[index].addEventListener("click", () => {
-      quantity++;
-      subBtns[index].style.backgroundColor = "var(--color-secondary)";
-      subBtns[index].style.color = "var(--neutral-01)";
-      updateQuantityDisplay();
-    });
-
-    subBtns[index].addEventListener("click", () => {
-      if (quantity > 0) {
-        quantity--;
-        updateQuantityDisplay();
-        if (quantity === 0) {
-          subBtns[index].style.color = "var(--color-primary)";
-          subBtns[index].style.backgroundColor = "var(--neutral-03)";
-        }
-      }
-    });
-
-    addToCartBtn.addEventListener("click", () => {
-      if (quantity === 0) {
-        alert("Chưa có sản phẩm nào trong giỏ hàng!");
-      } else {
-        alert(`Added ${quantity} items to cart successfully!`);
-      }
-    });
-
-    updateQuantityDisplay();
-  });
-});
- */
 
 
