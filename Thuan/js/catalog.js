@@ -49,13 +49,19 @@ const displayProducts = (productsInfo) => {
 
     // Change the ID attribute of the card for each product
     cardClone.setAttribute("data-id", id);
-    cardClone.querySelector(".add-to-cart .count .item-count").setAttribute("data-id", id);
-
+    const quantityInput = cardClone.querySelector(".add-to-cart .count .item-count");
+    quantityInput.setAttribute("data-id", id);
+    
     // Retrieve and update quantity from localStorage
-    const storedQuantity = getLocalStorageQuantity(id);
-    if (storedQuantity !== null) {
-      cardClone.querySelector(".add-to-cart .count .item-count").value = storedQuantity;
-    }
+  const storedQuantity = getLocalStorageQuantity(id);
+  if (storedQuantity !== null) {
+    quantityInput.value = storedQuantity;
+  } else {
+    // Nếu không có số lượng được lưu trữ trong local storage, lưu số lượng ban đầu
+    const initialQuantity = 0; // Số lượng ban đầu có thể được thiết lập là bất kỳ giá trị nào bạn muốn
+    quantityInput.value = initialQuantity;
+    updateLocalStorageQuantity(id, initialQuantity);
+  }
 
     gridCardsContainer.appendChild(cardClone);
     bindQuantityEvents(cardClone);
