@@ -43,7 +43,7 @@ function loadTableDesktop() {
                 </td>
                 <td>
                     <div class="subTotal">
-                        $${price*quantity}
+                        $${(price*quantity).toFixed(2)}
                     </div>
                 </td>
             </tr>
@@ -85,7 +85,7 @@ function loadTableMobile() {
             <td>
                 <div class="mobile-table-price">
                     <div class="subTotal">
-                        $${price*quantity}
+                        $${(price*quantity).toFixed(2)}
                     </div>
                     <div class="priceDisplay">
                         $${price}    
