@@ -1,7 +1,9 @@
 const bindQuantityEvents = (productCard) => {
   const decreaseButton = productCard.querySelector(".add-to-cart .count .sub");
   const increaseButton = productCard.querySelector(".add-to-cart .count .plus");
-  const quantityInput = productCard.querySelector(".add-to-cart .count .item-count");
+  const quantityInput = productCard.querySelector(
+    ".add-to-cart .count .item-count"
+  );
 
   const productId = quantityInput.getAttribute("data-id");
 
@@ -22,7 +24,10 @@ const displayProducts = (productsInfo) => {
   try {
     cataCards = JSON.parse(localStorage.getItem(productsInfo));
   } catch (error) {
-    console.error("Error parsing product information from local storage:", error);
+    console.error(
+      "Error parsing product information from local storage:",
+      error
+    );
     return;
   }
 
@@ -45,17 +50,20 @@ const displayProducts = (productsInfo) => {
     cardClone.querySelector(".card-img").src = image;
     cardClone.querySelector(".card-name").textContent = name;
     cardClone.querySelector(".card-price").textContent = price;
-    cardClone.querySelector(".tags").style.visibility = arrival === "New" ? "visible" : "hidden";
+    cardClone.querySelector(".tags").style.visibility =
+      arrival === "New" ? "visible" : "hidden";
 
     // Change the ID attribute of the card for each product
-    const cardCloneAddCartContainer = cardClone.querySelector('.add-to-cart');
+    const cardCloneAddCartContainer = cardClone.querySelector(".add-to-cart");
     cardCloneAddCartContainer.setAttribute("data-id", id);
-    const cardCloneCount = cardClone.querySelector('.add-to-cart .count');
+    const cardCloneCount = cardClone.querySelector(".add-to-cart .count");
     cardCloneCount.setAttribute("data-id", id);
     cardClone.setAttribute("data-id", id);
-    const quantityInput = cardClone.querySelector(".add-to-cart .count .item-count");
+    const quantityInput = cardClone.querySelector(
+      ".add-to-cart .count .item-count"
+    );
     quantityInput.setAttribute("data-id", id);
-    const buttonDataId = cardClone.querySelector('.add-to-cart .add-item');
+    const buttonDataId = cardClone.querySelector(".add-to-cart .add-item");
     buttonDataId.setAttribute("data-id", id);
 
     // Retrieve and update quantity from localStorage
@@ -77,7 +85,9 @@ const displayProducts = (productsInfo) => {
 };
 
 const increasingNumber = (productId) => {
-  const quantity = document.querySelector(`.add-to-cart .count .item-count[data-id="${productId}"]`);
+  const quantity = document.querySelector(
+    `.add-to-cart .count .item-count[data-id="${productId}"]`
+  );
 
   if (!quantity) {
     console.error("Không tìm thấy phần tử input số lượng.");
@@ -88,7 +98,9 @@ const increasingNumber = (productId) => {
   const maxQuantity = +quantity.max;
 
   if (isNaN(currentQuantity) || isNaN(maxQuantity)) {
-    console.error("Giá trị số lượng hoặc giá trị số lượng tối đa không hợp lệ.");
+    console.error(
+      "Giá trị số lượng hoặc giá trị số lượng tối đa không hợp lệ."
+    );
     return;
   }
 
@@ -101,7 +113,9 @@ const increasingNumber = (productId) => {
 };
 
 const decreasingNumber = (productId) => {
-  const quantity = document.querySelector(`.add-to-cart .count .item-count[data-id="${productId}"]`);
+  const quantity = document.querySelector(
+    `.add-to-cart .count .item-count[data-id="${productId}"]`
+  );
 
   if (!quantity) {
     console.error("Không tìm thấy phần tử input số lượng.");
@@ -112,7 +126,9 @@ const decreasingNumber = (productId) => {
   const minQuantity = +quantity.min;
 
   if (isNaN(currentQuantity) || isNaN(minQuantity)) {
-    console.error("Giá trị số lượng hoặc giá trị số lượng tối thiểu không hợp lệ.");
+    console.error(
+      "Giá trị số lượng hoặc giá trị số lượng tối thiểu không hợp lệ."
+    );
     return;
   }
 
@@ -137,8 +153,6 @@ const getLocalStorageQuantity = (productId) => {
   const storedQuantity = localStorage.getItem(`quantity_${productId}`);
   return storedQuantity !== null ? +storedQuantity : null;
 };
-
-
 
 //Khai báo mảng các card thông tin
 const productsInfoKeys = [
@@ -312,17 +326,20 @@ function buttonAddItemEvent() {
   }
 }
 */
-//event delegation: 
-document.addEventListener('click', event => {
-  const addButton = event.target.closest('.add-item');
+//event delegation:
+document.addEventListener("click", (event) => {
+  const addButton = event.target.closest(".add-item");
   if (!addButton) return;
 
-  const inputCount = addButton.parentElement.querySelector('.item-count');
-  const dataID = inputCount.getAttribute('data-id');
+  const inputCount = addButton.parentElement.querySelector(".item-count");
+  const dataID = inputCount.getAttribute("data-id");
   const quantityToAdd = parseInt(inputCount.value);
 
   if (quantityToAdd > 0) {
-    let objectToBeAdded = transformObject(findObjectInLocalStorageByID(dataID), quantityToAdd);
+    let objectToBeAdded = transformObject(
+      findObjectInLocalStorageByID(dataID),
+      quantityToAdd
+    );
     if (objectToBeAdded) {
       AppendObjectToShopInLocalStorage(objectToBeAdded);
     }
@@ -334,13 +351,14 @@ document.addEventListener('click', event => {
 document.addEventListener("DOMContentLoaded", updateGreenCartItemNumber);
 
 ////Những dòng code để tinh gọn:
-function findObjectInLocalStorageByID(id) { //Trả về object từ localstorage
+function findObjectInLocalStorageByID(id) {
+  //Trả về object từ localstorage
 
   let objectToBeReturned;
 
   for (let element of productsInfoKeys) {
     const dataFromLocalStorage = JSON.parse(localStorage.getItem(element));
-    objectToBeReturned = dataFromLocalStorage.find(obj => obj.id === id);
+    objectToBeReturned = dataFromLocalStorage.find((obj) => obj.id === id);
 
     if (objectToBeReturned) {
       return objectToBeReturned;
@@ -349,8 +367,8 @@ function findObjectInLocalStorageByID(id) { //Trả về object từ localstorag
   return null;
 }
 
-
-function transformObject(obj, InPutQuantity) { //Biến đổi object để add vào Shop.Array_InCart()
+function transformObject(obj, InPutQuantity) {
+  //Biến đổi object để add vào Shop.Array_InCart()
   // {
   //       id: null,
   //       name:"",
@@ -362,18 +380,25 @@ function transformObject(obj, InPutQuantity) { //Biến đổi object để add 
   //       subtotal: 0,
   //   }, //id: null, đây là object mẫu, ko dc render ra
 
-
   let id = obj.id;
   let name = obj.name;
   let image = obj.image;
-  let price = parseFloat(obj.price.replace('$', ''));
+  let price = parseFloat(obj.price.replace("$", ""));
   let quantity = InPutQuantity;
   let title = "";
   let additional = "";
-  let subtotal = price * quantity;
+  let subtotal = price * InPutQuantity;
 
-
-  let objToBeReturned = { id, name, image, additional, title, price, quantity, subtotal };
+  let objToBeReturned = {
+    id,
+    name,
+    image,
+    additional,
+    title,
+    price,
+    quantity,
+    subtotal,
+  };
 
   return objToBeReturned;
 }
@@ -381,17 +406,23 @@ function transformObject(obj, InPutQuantity) { //Biến đổi object để add 
 function AppendObjectToShopInLocalStorage(object) {
   Shop = JSON.parse(localStorage.getItem("Shop"));
 
-  const existingItem = Shop.Array_CartItems.find(item => item.id === object.id);
+  const existingItem = Shop.Array_CartItems.find(
+    (item) => item.id === object.id
+  );
+  console.log(existingItem);
   if (existingItem) {
     existingItem.quantity += object.quantity; // Increment quantity if item exists
+    console.log(existingItem.subtotal);
     alert(`Đã thêm ${object.quantity} mặt hàng ${object.name} thành công!`);
   } else {
     Shop.Array_CartItems.push(object); // Add new item if it doesn't exist
-    alert(`${object.quantity} mặt hàng ${object.name} đã được thêm vào giỏ hàng thành công!`);
+    alert(
+      `${object.quantity} mặt hàng ${object.name} đã được thêm vào giỏ hàng thành công!`
+    );
   }
 
   updateDataShop();
   updateGreenCartItemNumber();
   updateLocalStorageQuantity();
-  localStorage.setItem('Shop', JSON.stringify(Shop));
+  localStorage.setItem("Shop", JSON.stringify(Shop));
 }

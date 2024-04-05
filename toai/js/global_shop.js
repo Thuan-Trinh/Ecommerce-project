@@ -50,7 +50,7 @@ const findObjectById = function (array, id) {
 function adjustItemQuantityByID(id, newQuantity) {
     const item = findObjectById(Shop.Array_CartItems, id);
 
-    item.quantity = newQuantity;
+    newQuantity = item.quantity;
     item.subtotal = item.price * newQuantity;
 
     updateDataShop();
